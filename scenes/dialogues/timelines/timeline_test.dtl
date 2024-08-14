@@ -1,0 +1,6 @@
+join character_test 1
+character_test (Default): Hi, I'm test
+leave character_test
+Actually, that's all
+join character_test 2 [animation="Instant In Or Out"]
+character_test (Default): Baka

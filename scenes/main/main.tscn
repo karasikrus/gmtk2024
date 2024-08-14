@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl7kmv1cyrida"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_kdb3r"]
+[ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_pe6fa"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_kdb3r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+position = Vector2(743, 106)
+rotation = 0.892149
+texture = ExtResource("1_pe6fa")
