@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Start And Options"
+config/name="GMTK2024"
+config/description="Game for GMTK2024 game jam"
 run/main_scene="res://scenes/menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
