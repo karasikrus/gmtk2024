@@ -30,6 +30,9 @@ directories/dtl_directory={
 }
 layout/style_list=[]
 layout/default_style="Default"
+variables={
+"Var": ""
+}
 
 [editor_plugins]
 
