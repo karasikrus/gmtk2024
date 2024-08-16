@@ -4,7 +4,7 @@ leave character_test
 Actually, that's all
 join character_test 2 [animation="Instant In Or Out"]
 character_test (Default): Baka
-- 1 [if {} == ""]
+- 1
 	Это раз
 - 2
 	Это two
