@@ -47,7 +47,8 @@ func _process_WASD_input(delta):
 	if is_in_dash:
 		return
 	var direction = Input.get_vector("left", "right", "up", "down")
-	last_direction = direction
+	if direction != Vector2(0.0, 0.0):
+		last_direction = direction
 	velocity = direction * speed
 	
 
@@ -63,7 +64,6 @@ func _process_dash(delta):
 	if acceptance_time_left > 0:
 		dash_speed = dash_speed_in_time
 		is_dash_in_time = true
-		increase_size(1)
 		prints("dash in time")
 	else:
 		dash_speed = dash_speed_not_in_time
@@ -86,6 +86,7 @@ func _process_collision(delta):
 			if not collider.can_give_hit():
 				return
 			collider.get_hit(last_direction)
+			increase_size(1)
 			var enemy_died = collider.is_died
 			if not enemy_died:
 				last_direction = -last_direction
