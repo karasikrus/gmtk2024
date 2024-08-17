@@ -7,3 +7,4 @@
 stream = ExtResource("1_15512")
 parameters/looping = true
 script = ExtResource("1_tqegu")
+bpm = 143

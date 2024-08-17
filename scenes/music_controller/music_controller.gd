@@ -2,6 +2,7 @@ extends AudioStreamPlayer2D
 class_name MusicController
 @export var bpm := 80	
 @export var measures := 4
+@export var beat_in_measure := 4
 var next_note_index := 0
 
 var song_position := 0.0
@@ -34,6 +35,8 @@ func _physics_process(delta):
 func update_pre_beat():
 	if pre_beat_passed:
 		return
+	if song_position_in_beats % measures != (beat_in_measure - 1) % measures:
+			return
 	var song_position_of_next_beat = (song_position_in_beats + 1) * sec_per_beat
 	if	(song_position + MusicGlobalEvents.pre_bit_interval) >= song_position_of_next_beat:
 		MusicGlobalEvents.emit_pre_beat(song_position_in_beats + 1)
@@ -44,6 +47,8 @@ func update_pre_beat():
 func update_beat():	
 	if last_reported_beat >= song_position_in_beats:
 		return
+	if song_position_in_beats % measures != beat_in_measure % measures:
+			return
 	if measure > measures:
 		measure = 1
 	MusicGlobalEvents.emit_beat(song_position_in_beats)
