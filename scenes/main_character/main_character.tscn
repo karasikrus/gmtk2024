@@ -9,7 +9,7 @@ gradient = SubResource("Gradient_gdlno")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3evak"]
 
-[node name="MainCharacter" type="CharacterBody2D"]
+[node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_dc8iu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
