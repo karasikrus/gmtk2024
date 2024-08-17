@@ -35,7 +35,6 @@ func _physics_process(delta):
 		var collider = collision.get_collider()
 		if collider == main_player:
 			attack()
-	
 
 	move_and_slide()
 	

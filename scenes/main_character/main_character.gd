@@ -9,13 +9,15 @@ var isDied = false
 
 var current_health = 4
 
+func _ready():
+	current_health = max_health
+
 func _physics_process(delta):
 	if isFreezed or isDied:
 		return
 	
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
-
 	move_and_slide()
 
 
@@ -24,3 +26,4 @@ func get_hit(damage = 1):
 	if current_health <= 0:
 		current_health = 0
 		isDied = true
+		LevelManager.reload_scene()

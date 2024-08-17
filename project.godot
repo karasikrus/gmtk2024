@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 SceneTransition="*res://scenes/autoload/scene_transition.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+LevelManager="*res://scenes/autoload/level_manager.gd"
 
 [dialogic]
 
