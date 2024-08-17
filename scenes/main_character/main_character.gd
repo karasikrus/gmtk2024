@@ -9,6 +9,10 @@ var is_in_dash_cooldown = false
 
 @export var speed = 200
 @export var dash_speed = 500
+
+@export var dash_speed_in_time = 500
+@export var dash_speed_not_in_time = 300
+
 @export var max_health = 4
 @export var dash_cooldown_time = 0.5
 @export var dash_duration = 0.2 #(dsmolikov): smth wrong here tho
@@ -46,10 +50,17 @@ func _process_dash(delta):
 	if is_in_dash or is_in_dash_cooldown:
 		return
 	var is_dash = Input.is_action_pressed("dash")
-	if is_dash:
-		velocity = last_direction * dash_speed
-		dash_timer.start(dash_cooldown_time)
-		is_in_dash = true
+	if not is_dash:
+		return
+		
+	var dash_speed = 0 
+	if MusicGlobalEvents.acceptance_timer.time_left > 0:
+		dash_speed = dash_speed_in_time
+	else:
+		dash_speed = dash_speed_not_in_time 
+	velocity = last_direction * dash_speed
+	dash_timer.start(dash_cooldown_time)
+	is_in_dash = true
 	
 	
 
