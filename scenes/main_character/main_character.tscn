@@ -8,7 +8,7 @@
 gradient = SubResource("Gradient_gdlno")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3evak"]
-size = Vector2(65, 64)
+size = Vector2(64, 64)
 
 [node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_dc8iu")
@@ -19,7 +19,6 @@ texture = SubResource("GradientTexture2D_7tr5s")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_3evak")
 
 [node name="DashCooldownTimer" type="Timer" parent="."]

@@ -16,18 +16,22 @@ var is_dash_in_time = false
 @export var max_health = 4
 @export var dash_cooldown_time = 0.5
 @export var dash_duration = 0.2 #(dsmolikov): smth wrong here tho
+@export var max_size = 5
 
 @onready var dash_cooldown_timer = $DashCooldownTimer
 @onready var dash_timer = $DashTimer
 
 var last_direction = null
 var current_health = 4
+var current_size = 0
 
+var sizes = [1, 1.5, 2, 2.5, 3, 3.5]
 
 func _ready():
 	current_health = max_health
 	dash_timer.one_shot = true
 	dash_cooldown_timer.one_shot = true
+	
 
 func _physics_process(delta):
 	if is_freezed or is_died:
@@ -59,9 +63,11 @@ func _process_dash(delta):
 	if acceptance_time_left > 0:
 		dash_speed = dash_speed_in_time
 		is_dash_in_time = true
+		increase_size(1)
 		prints("dash in time")
 	else:
-		dash_speed = dash_speed_not_in_time 
+		dash_speed = dash_speed_not_in_time
+		increase_size(0)
 		prints("dash not in time")
 	var dash_time_offset = acceptance_time_left - MusicGlobalEvents.pre_bit_interval #(dsmoliakov): we might to adapt this to non symmetric interval
 	velocity = last_direction * dash_speed
@@ -88,14 +94,13 @@ func _process_collision(delta):
 			var normal = collision.get_normal()
 			var reflected_direction = normal.reflect(last_direction)
 			velocity = -last_direction * speed
-			
-		
 
 
 func get_hit(damage = 1):
 	if is_in_dash:
 		return
 	current_health -= damage
+	drop_size()
 	if current_health <= 0:
 		current_health = 0
 		is_died = true
@@ -109,7 +114,17 @@ func _on_dash_timer_timeout() -> void:
 	velocity = last_direction * speed
 	dash_cooldown_timer.start(dash_cooldown_time)
 
-	
+
+func increase_size(value = 1):
+	current_size += value
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
+
+
+func drop_size():
+	current_size = 0
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
 
 
 func _on_dash_cooldown_timer_timeout() -> void:
