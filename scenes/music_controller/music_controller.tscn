@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://5cp7s42peway"]
+
+[ext_resource type="AudioStream" uid="uid://dxrl6d8bpollj" path="res://scenes/music_controller/metronom-schet-80.mp3" id="1_15512"]
+[ext_resource type="Script" path="res://scenes/music_controller/music_controller.gd" id="1_tqegu"]
+
+[node name="MusicController" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_15512")
+parameters/looping = true
+script = ExtResource("1_tqegu")

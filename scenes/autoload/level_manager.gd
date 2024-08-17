@@ -3,6 +3,7 @@ extends Node
 
 @onready var current_scene = "res://scenes/menu/main_menu.tscn" 
 @onready var current_scene_index = 0
+
 var scene_list = [
 	"res://scenes/menu/main_menu.tscn",
 	"res://scenes/main/main.tscn" 

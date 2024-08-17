@@ -10,10 +10,9 @@
 script = ExtResource("1_kdb3r")
 
 [node name="MusicController" parent="." instance=ExtResource("2_lhweb")]
-autoplay = true
 
 [node name="BasicEnemy" parent="." instance=ExtResource("2_41msb")]
-speed = 0
+visible = false
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_s4ber")]
 position = Vector2(627, 359)
