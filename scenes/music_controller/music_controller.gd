@@ -22,9 +22,12 @@ func _ready():
 
 func _physics_process(delta):
 	if playing:
+		var prev_song_position = song_position
 		song_position = get_playback_position() + AudioServer.get_time_since_last_mix()
 		song_position -= AudioServer.get_output_latency()
 		song_position_in_beats = int(floor(song_position / sec_per_beat))
+		if (prev_song_position > song_position):
+			last_reported_beat = 0
 		update_pre_beat()
 		update_beat()
 

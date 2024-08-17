@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/basic_enemy/basic_enemy.gd" id="1_7ye3v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5g8o4"]
+size = Vector2(64, 62)
 
 [sub_resource type="Gradient" id="Gradient_lrc1g"]
 offsets = PackedFloat32Array(0.337662, 0.991342)
@@ -11,10 +12,11 @@ colors = PackedColorArray(0.835498, 0.835498, 0.835498, 1, 0.909804, 0.168627, 0
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2d1cl"]
 gradient = SubResource("Gradient_lrc1g")
 
-[node name="BasicEnemy" type="CharacterBody2D"]
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_7ye3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_5g8o4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,4 +27,7 @@ texture = SubResource("GradientTexture2D_2d1cl")
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 2.0
 
+[node name="OnHitCooldown" type="Timer" parent="."]
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="OnHitCooldown" to="." method="_on_on_hit_cooldown_timeout"]

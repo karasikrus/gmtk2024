@@ -13,7 +13,8 @@ script = ExtResource("1_kdb3r")
 autoplay = true
 
 [node name="BasicEnemy" parent="." instance=ExtResource("2_41msb")]
-speed = 0
+position = Vector2(347, 355)
+speed = 10
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_s4ber")]
 position = Vector2(627, 359)
