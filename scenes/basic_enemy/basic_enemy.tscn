@@ -27,7 +27,7 @@ texture = SubResource("GradientTexture2D_2d1cl")
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="OnHitCooldown" type="Timer" parent="."]
+[node name="OnHitCooldown" type="Timer" parent="." groups=["enemy"]]
 
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="OnHitCooldown" to="." method="_on_on_hit_cooldown_timeout"]

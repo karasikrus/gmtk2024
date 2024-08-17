@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name BasicEnemy
 @export var max_health = 3
 @export var speed = 400
 @export var on_hit_speed = 100
@@ -57,7 +57,7 @@ func _process_collision(delta):
 func _on_attack_cooldown_timeout() -> void:
 	is_freezed = false
 	
-func can_give_hit():
+func can_get_hit():
 	return true
 	
 func kill():

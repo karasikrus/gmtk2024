@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1bey2cq2f4gm"]
+
+[ext_resource type="Script" path="res://scenes/explosion/explosion.gd" id="1_2ine6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ksjc"]
+radius = 0.0
+
+[sub_resource type="Gradient" id="Gradient_lse81"]
+offsets = PackedFloat32Array(0.272727, 1)
+colors = PackedColorArray(9.14484e-07, 0.785126, 0.378851, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ooxdt"]
+gradient = SubResource("Gradient_lse81")
+fill = 1
+fill_from = Vector2(0.507645, 0.492355)
+
+[node name="Explosion" type="Area2D" groups=["explosion"]]
+script = ExtResource("1_2ine6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7ksjc")
+
+[node name="ExplosionWavefrontTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("GradientTexture2D_ooxdt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ExplosionWavefrontTimer" to="." method="_on_explosion_wavefront_timer_timeout"]
