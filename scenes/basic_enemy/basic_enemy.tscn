@@ -16,6 +16,7 @@ gradient = SubResource("Gradient_lrc1g")
 script = ExtResource("1_7ye3v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_5g8o4")
 

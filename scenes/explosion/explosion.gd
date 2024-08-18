@@ -3,6 +3,7 @@ class_name Explosion
 var radius = 3
 var time = 0.5
 var starting_radius = 0
+var was_on_beat = false
 @onready var explosionWavefrontTimer = $ExplosionWavefrontTimer
 @onready var collisionShape = $CollisionShape2D
 @onready var sprite = $Sprite2D
@@ -42,8 +43,9 @@ func _on_explosion_wavefront_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.get_hit(Vector2(0, 0), 1)
+		body.get_hit(Vector2(0, 0), true, was_on_beat, 1)
 		body.is_freezed = true
+	
 		
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("enemy"):

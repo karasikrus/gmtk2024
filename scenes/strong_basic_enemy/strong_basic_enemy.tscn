@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://c11kgm7ujubf7"]
+
+[ext_resource type="Script" path="res://scenes/strong_basic_enemy/strong_basic_enemy.gd" id="1_ybuag"]
+
+[sub_resource type="Gradient" id="Gradient_ew8ts"]
+offsets = PackedFloat32Array(0.0822511)
+colors = PackedColorArray(0.905269, 3.34509e-06, 1.15514e-06, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tb6q0"]
+gradient = SubResource("Gradient_ew8ts")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gplqi"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_rss8l"]
+offsets = PackedFloat32Array(0, 0.627706, 0.848485)
+colors = PackedColorArray(1, 1, 1, 1, 0.372294, 0.372294, 0.372294, 0.372294, 0.806258, 0, 0.0920652, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xit7k"]
+gradient = SubResource("Gradient_rss8l")
+fill = 1
+fill_from = Vector2(0.486239, 0.513761)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8d6x"]
+radius = 36.0665
+
+[node name="StrongBasicEnemy" type="CharacterBody2D" groups=["StrongBasicEnemy"]]
+script = ExtResource("1_ybuag")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_tb6q0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gplqi")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="SpawnPoint1" type="Node2D" parent="SpawnPoints"]
+position = Vector2(-58.9, 0)
+
+[node name="AttackZone" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 3)
+scale = Vector2(3, 3)
+texture = SubResource("GradientTexture2D_xit7k")
+
+[node name="AttackZoneArea" type="Area2D" parent="AttackZone"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone/AttackZoneArea"]
+shape = SubResource("CircleShape2D_b8d6x")

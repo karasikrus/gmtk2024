@@ -87,7 +87,6 @@ func _process_dash(delta):
 		prints("dash in time")
 	else:
 		dash_speed = dash_speed_not_in_time
-		drop_size()
 		prints("dash not in time")
 	var dash_time_offset = acceptance_time_left - MusicGlobalEvents.pre_bit_interval #(dsmoliakov): we might to adapt this to non symmetric interval
 	velocity = last_direction * dash_speed
@@ -107,6 +106,7 @@ func _process_super_attack(delta):
 	projectile_node.direction = last_direction
 	projectile_node.velocity = projectile_speed
 	projectile_node.size = current_size
+	projectile_node.was_on_beat = is_dash_in_time
 	get_parent().add_child(projectile_node)
 	
 	var wavefront_node = wavefront.instantiate() as Explosion
@@ -114,6 +114,7 @@ func _process_super_attack(delta):
 	wavefront_node.radius = 10
 	wavefront_node.starting_radius = 0
 	wavefront_node.time = 1
+	wavefront_node.was_on_beat = is_dash_in_time
 	get_parent().add_child(wavefront_node)
 	
 	is_super_attack = true
@@ -129,12 +130,11 @@ func _process_collision(delta):
 		return
 	var collider = collision.get_collider()
 
-	if collider.is_in_group("enemy") and is_in_dash:
+	if collider.is_in_group("enemy") or collider.is_in_group("StrongBasicEnemy") and is_in_dash:
 		if is_dash_in_time:
-			if not collider.can_get_hit():
-				return
-			collider.get_hit(last_direction)
-			increase_size(1)
+			var success = collider.get_hit(last_direction, false, is_dash_in_time)
+			if success:
+				increase_size(1)
 			var enemy_died = collider.is_died
 			if not enemy_died:
 				last_direction = -last_direction

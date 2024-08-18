@@ -77,16 +77,16 @@ func kill():
 	EnemyManager.remove_from_enemy_count(self)
 	queue_free()
 	
-func get_hit(direction, damage = 1):
+func get_hit(direction, was_super_attack, was_on_beat, damage = 1):
 	if is_died:
-		return
+		return false
 	is_on_hit_cooldown = true
 	on_hit_cooldown_timer.start(on_hit_cooldown_time)
 	velocity = direction * on_hit_speed
 	health -= damage
 	if health <= 0:
 		kill()
-	pass
+	return true
 	
 
 

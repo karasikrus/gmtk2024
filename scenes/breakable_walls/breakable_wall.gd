@@ -12,6 +12,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+	
 
 func destroy_wall():
 	set_collision_mask_value(1, false) #(dsmoliakov): bruh, thats cursed, why it's 1 and not 0
