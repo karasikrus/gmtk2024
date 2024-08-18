@@ -177,3 +177,6 @@ func can_super_attack() -> bool:
 func _on_super_attack_timer_timeout() -> void:
 	is_super_attack = false
 	pass # Replace with function body.
+
+func get_current_size() -> int:
+	return current_size

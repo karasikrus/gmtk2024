@@ -22,6 +22,7 @@ SceneTransition="*res://scenes/autoload/scene_transition.tscn"
 LevelManager="*res://scenes/autoload/level_manager.gd"
 MusicGlobalEvents="*res://scenes/autoload/music_events/music_global_events.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+EnemyManager="*res://scenes/autoload/enemy_manager/enemy_manager.tscn"
 
 [dialogic]
 

@@ -29,6 +29,7 @@ func _ready():
 	on_hit_cooldown_timer.one_shot = true
 	beat_dash_timer.one_shot = true
 	MusicGlobalEvents.beat.connect(_on_beat_dash_start)
+	EnemyManager.add_to_enemy_count(self)
 
 
 func attack():
@@ -73,6 +74,7 @@ func kill():
 	is_died = true
 	set_collision_mask_value(1, false) #(dsmoliakov): bruh, thats cursed, why it's 1 and not 0
 	set_collision_layer_value(1, false)
+	EnemyManager.remove_from_enemy_count(self)
 	queue_free()
 	
 func get_hit(direction, damage = 1):
