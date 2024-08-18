@@ -29,5 +29,8 @@ wait_time = 2.0
 
 [node name="OnHitCooldown" type="Timer" parent="." groups=["enemy"]]
 
+[node name="BeatDashTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="OnHitCooldown" to="." method="_on_on_hit_cooldown_timeout"]
+[connection signal="timeout" from="BeatDashTimer" to="." method="_on_beat_dash_timer_timeout"]

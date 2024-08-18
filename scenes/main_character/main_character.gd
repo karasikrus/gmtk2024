@@ -21,10 +21,13 @@ var is_super_attack = false
 @export var max_size = 5
 @export var super_attack_time = 0.2
 
+@export var beat_dash_time = 0.1
+
 
 @onready var dash_cooldown_timer = $DashCooldownTimer
 @onready var dash_timer = $DashTimer
 @onready var super_attack_timer = $SuperAttackTimer
+
 @onready var projectile = load("res://scenes/projectile/projectile.tscn")
 @onready var wavefront = load("res://scenes/explosion/explosion.tscn")
 
