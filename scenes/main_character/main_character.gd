@@ -22,14 +22,18 @@ var is_super_attack = false
 @export var super_attack_time = 0.2
 
 @export var beat_dash_time = 0.1
+@export var on_hit_flash_time = 0.5
 
 
 @onready var dash_cooldown_timer = $DashCooldownTimer
 @onready var dash_timer = $DashTimer
 @onready var super_attack_timer = $SuperAttackTimer
+@onready var on_hit_flash_timer = $OnHitFlashTimer
 
 @onready var projectile = load("res://scenes/projectile/projectile.tscn")
 @onready var wavefront = load("res://scenes/explosion/explosion.tscn")
+
+@onready var sprite = $Sprite2D as Sprite2D
 
 
 var last_direction = null
@@ -40,8 +44,12 @@ var sizes = [1, 1.5, 2, 2.5, 3, 3.5]
 func _ready():
 	dash_timer.one_shot = true
 	dash_cooldown_timer.one_shot = true
+	on_hit_flash_timer.one_shot = true
 
-
+func _process(delta):
+	if on_hit_flash_timer.time_left > 0:
+		var normalized_time = on_hit_flash_timer.time_left / on_hit_flash_time
+		sprite.material.set_shader_parameter("normalized_time", normalized_time as float)
 
 func _physics_process(delta):
 	if is_freezed or is_died:
@@ -51,6 +59,7 @@ func _physics_process(delta):
 	_process_dash(delta)
 	_process_collision(delta)
 	_process_super_attack(delta)
+	
 	move_and_slide()
 
 
@@ -149,6 +158,7 @@ func get_hit(damage = 1):
 		is_died = true
 		LevelManager.reload_scene()
 	else:
+		on_hit_flash_timer.start(on_hit_flash_time)
 		drop_size()
 
 func _on_dash_timer_timeout() -> void:
