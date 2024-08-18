@@ -48,7 +48,7 @@ func update_beat():
 	if last_reported_beat >= song_position_in_beats:
 		return
 	if song_position_in_beats % measures != beat_in_measure % measures:
-			return
+		return
 	if measure > measures:
 		measure = 1
 	MusicGlobalEvents.emit_beat(song_position_in_beats)
