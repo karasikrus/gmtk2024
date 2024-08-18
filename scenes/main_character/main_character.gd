@@ -175,7 +175,7 @@ func _on_dash_timer_timeout() -> void:
 	dash_cooldown_timer.start(dash_cooldown_time)
 
 func increase_size(value = 1):
-	current_size += value
+	current_size = clampi(value + 1, 0, max_size)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
 
