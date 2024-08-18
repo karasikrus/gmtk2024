@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://da5lq21bgk25n"]
+
+[ext_resource type="Script" path="res://scenes/breakable_walls/breakable_wall.gd" id="1_gbpip"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ndky"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_uf5ch"]
+offsets = PackedFloat32Array(0.549784)
+colors = PackedColorArray(0.716379, 0.63216, 0.724014, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r7d36"]
+gradient = SubResource("Gradient_uf5ch")
+
+[node name="BreakableWall" type="StaticBody2D" groups=["breakable_wall"]]
+script = ExtResource("1_gbpip")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["breakable_wall"]]
+shape = SubResource("RectangleShape2D_6ndky")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_r7d36")

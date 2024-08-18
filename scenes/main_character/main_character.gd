@@ -40,7 +40,8 @@ var sizes = [1, 1.5, 2, 2.5, 3, 3.5]
 func _ready():
 	dash_timer.one_shot = true
 	dash_cooldown_timer.one_shot = true
-	
+
+
 
 func _physics_process(delta):
 	if is_freezed or is_died:
@@ -52,6 +53,7 @@ func _physics_process(delta):
 	_process_super_attack(delta)
 	move_and_slide()
 
+
 func _process_WASD_input(delta):
 	if is_in_dash or is_super_attack:
 		return
@@ -59,7 +61,7 @@ func _process_WASD_input(delta):
 	if direction != Vector2(0.0, 0.0):
 		last_direction = direction
 	velocity = direction * speed
-	
+
 
 func _process_dash(delta):
 	if is_in_dash or is_in_dash_cooldown or is_super_attack:
@@ -107,18 +109,17 @@ func _process_super_attack(delta):
 	
 	is_super_attack = true
 	super_attack_timer.start(super_attack_time)
-	drop_size()
-
-	
+	drop_size()	
 	pass
-	
+
+
 func _process_collision(delta):
-	var collision = move_and_collide(velocity * delta, true, 0.08, true)
+	var collision = move_and_collide(velocity * delta, true)
 	
 	if not collision:
 		return
 	var collider = collision.get_collider()
-	
+
 	if collider.is_in_group("enemy") and is_in_dash:
 		if is_dash_in_time:
 			if not collider.can_get_hit():
@@ -134,6 +135,12 @@ func _process_collision(delta):
 			var reflected_direction = normal.reflect(last_direction)
 			velocity = -last_direction * speed
 
+	if collider.is_in_group("breakable_wall"):
+		if is_dash_in_time:
+			collider.destroy_wall()
+		else:
+			last_direction = -last_direction
+			velocity = last_direction * dash_speed_in_time
 
 func get_hit(damage = 1):
 	if is_in_dash or is_super_attack:
@@ -144,7 +151,6 @@ func get_hit(damage = 1):
 	else:
 		drop_size()
 
-
 func _on_dash_timer_timeout() -> void:
 	is_in_dash = false
 	is_in_dash_cooldown = true
@@ -152,25 +158,21 @@ func _on_dash_timer_timeout() -> void:
 	velocity = last_direction * speed
 	dash_cooldown_timer.start(dash_cooldown_time)
 
-
 func increase_size(value = 1):
 	current_size += value
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
-
 
 func drop_size():
 	current_size = 0
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
 
-
 func _on_dash_cooldown_timer_timeout() -> void:
 	is_in_dash_cooldown = false
 
 func can_super_attack() -> bool:
 	return current_size > 0
-
 
 func _on_super_attack_timer_timeout() -> void:
 	is_super_attack = false

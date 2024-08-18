@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl7kmv1cyrida"]
+[gd_scene load_steps=7 format=3 uid="uid://bl7kmv1cyrida"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_kdb3r"]
 [ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_pe6fa"]
 [ext_resource type="PackedScene" uid="uid://tgvvceg0drrx" path="res://scenes/basic_enemy/basic_enemy.tscn" id="2_41msb"]
 [ext_resource type="PackedScene" uid="uid://5cp7s42peway" path="res://scenes/music_controller/music_controller.tscn" id="2_lhweb"]
 [ext_resource type="PackedScene" uid="uid://wxcqvavncu0b" path="res://scenes/main_character/main_character.tscn" id="2_s4ber"]
+[ext_resource type="PackedScene" uid="uid://da5lq21bgk25n" path="res://scenes/breakable_walls/breakable_wall.tscn" id="6_2q357"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kdb3r")
@@ -14,7 +15,6 @@ autoplay = true
 
 [node name="BasicEnemy" parent="." instance=ExtResource("2_41msb")]
 position = Vector2(347, 355)
-speed = 10
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_s4ber")]
 position = Vector2(627, 359)
@@ -25,3 +25,6 @@ modulate = Color(1, 0, 1, 1)
 position = Vector2(743, 106)
 rotation = 0.892149
 texture = ExtResource("1_pe6fa")
+
+[node name="BreakableWall" parent="." instance=ExtResource("6_2q357")]
+position = Vector2(850, 360)
