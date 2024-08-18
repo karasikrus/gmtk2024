@@ -80,7 +80,7 @@ func _process_dash(delta):
 		return
 		
 	var dash_speed = 0 
-	var acceptance_time_left = MusicGlobalEvents.acceptance_timer.time_left
+	var acceptance_time_left = MusicGlobalEvents.get_correct_beat_time_left()
 	if acceptance_time_left > 0:
 		dash_speed = dash_speed_in_time
 		is_dash_in_time = true

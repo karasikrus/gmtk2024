@@ -11,11 +11,14 @@ signal combo(streak)
 var combo_streak := 0
 var correct_notes := 0
 
-@onready var acceptance_timer = $AcceptanceTimer
+@onready var correct_beat_timer = 0
+var accept
 
 func _ready():
-	acceptance_timer.one_shot = true
-	
+	pass
+func _physics_process(delta: float) -> void:
+	if correct_beat_timer > 0:
+		correct_beat_timer -= delta #(iantonov) tick correct_beat_timer
 
 func restart_combo():
 	combo_streak = 0
@@ -27,7 +30,7 @@ func emit_beat(position):
 
 func emit_pre_beat(position):
 	pre_beat.emit(position)
-	acceptance_timer.start(pre_bit_interval * 2) #(dsmoliakov): for now symmetrical
+	correct_beat_timer = pre_bit_interval * 2 #(iantonov) start correct_beat_timer
 	
 
 func emit_measure(position):
@@ -41,3 +44,6 @@ func correct_note():
 func wrong_note():
 	combo_streak = 0
 	combo.emit(combo_streak)
+
+func get_correct_beat_time_left() -> float:
+	return correct_beat_timer
