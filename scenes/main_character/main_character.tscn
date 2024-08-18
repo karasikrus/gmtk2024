@@ -6,8 +6,14 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2tkl1"]
 shader = ExtResource("2_uom5o")
 shader_parameter/normalized_time = 0.0
-shader_parameter/tint = Vector4(1, 0, 0, 1)
+shader_parameter/damage_tint = Vector4(1, 0, 0, 1)
 shader_parameter/active = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_gdlno"]
 
