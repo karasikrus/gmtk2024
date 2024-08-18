@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl7kmv1cyrida"]
+[gd_scene load_steps=10 format=3 uid="uid://bl7kmv1cyrida"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_kdb3r"]
 [ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_pe6fa"]
+[ext_resource type="PackedScene" uid="uid://k0jy6f7q2b82" path="res://scenes/spike/spike.tscn" id="2_6svt2"]
 [ext_resource type="PackedScene" uid="uid://tgvvceg0drrx" path="res://scenes/basic_enemy/basic_enemy.tscn" id="2_41msb"]
 [ext_resource type="PackedScene" uid="uid://bp8oxmtlsjkxa" path="res://scenes/strong_breakable_wall/strong_breakable_wall.tscn" id="2_gj2q7"]
 [ext_resource type="PackedScene" uid="uid://5cp7s42peway" path="res://scenes/music_controller/music_controller.tscn" id="2_lhweb"]
@@ -11,6 +12,9 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kdb3r")
+
+[node name="Spike" parent="." instance=ExtResource("2_6svt2")]
+position = Vector2(616, 193)
 
 [node name="StrongBasicEnemy" parent="." instance=ExtResource("2_q70ou")]
 position = Vector2(761, 523)

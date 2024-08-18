@@ -150,10 +150,16 @@ func _process_collision(delta):
 		else:
 			last_direction = -last_direction
 			velocity = last_direction * dash_speed_in_time
+			
+	if collider.is_in_group("spike"):
+		last_direction = -last_direction
+		velocity = last_direction * dash_speed_in_time
+		get_hit(1, true)
 
-func get_hit(damage = 1):
-	if is_in_dash or is_super_attack:
+func get_hit(damage = 1, force_give_hit = false):
+	if (is_in_dash or is_super_attack) and !force_give_hit:
 		return
+		
 	if current_size == 0:
 		is_died = true
 		LevelManager.reload_scene()
