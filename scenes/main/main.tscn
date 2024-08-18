@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl7kmv1cyrida"]
+[gd_scene load_steps=11 format=3 uid="uid://bl7kmv1cyrida"]
 
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_kdb3r"]
 [ext_resource type="Texture2D" uid="uid://bgu4lnsafosmc" path="res://icon.svg" id="1_pe6fa"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c11kgm7ujubf7" path="res://scenes/strong_basic_enemy/strong_basic_enemy.tscn" id="2_q70ou"]
 [ext_resource type="PackedScene" uid="uid://wxcqvavncu0b" path="res://scenes/main_character/main_character.tscn" id="2_s4ber"]
 [ext_resource type="PackedScene" uid="uid://da5lq21bgk25n" path="res://scenes/breakable_walls/breakable_wall.tscn" id="6_2q357"]
+[ext_resource type="PackedScene" uid="uid://dbuyy45aykem" path="res://scenes/long_range_enemy/long_range_enemy.tscn" id="10_yijnd"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_kdb3r")
@@ -44,3 +45,5 @@ texture = ExtResource("1_pe6fa")
 
 [node name="BreakableWall" parent="." instance=ExtResource("6_2q357")]
 position = Vector2(850, 360)
+
+[node name="LongRangeEnemy" parent="." instance=ExtResource("10_yijnd")]

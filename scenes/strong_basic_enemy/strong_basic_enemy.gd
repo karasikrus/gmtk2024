@@ -3,8 +3,6 @@ class_name StrongBasicEnemy
 @export var max_health = 3
 @export var speed = 10
 
-@export var attack_cooldown_time = 1
-@onready var attack_cooldown_timer = $AttackCooldown
 @export var attack_distance = 300 #
 @export var min_distance_to_player = 100 #(dsmoliakov): daamn, this thing is resolution dependent
 @export var max_distance_to_player = 250

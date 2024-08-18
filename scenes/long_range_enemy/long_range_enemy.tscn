@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbuyy45aykem"]
+
+[ext_resource type="Script" path="res://scenes/long_range_enemy/long_range_enemy.gd" id="1_fpe2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15q2k"]
+size = Vector2(63, 64)
+
+[sub_resource type="Gradient" id="Gradient_musw6"]
+colors = PackedColorArray(0, 0, 0, 1, 0.68845, 0.98, 0.147, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iow06"]
+gradient = SubResource("Gradient_musw6")
+
+[node name="LongRangeEnemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_fpe2h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_15q2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_iow06")
+
+[node name="Line2D" type="Line2D" parent="."]
