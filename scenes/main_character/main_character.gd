@@ -59,7 +59,7 @@ var is_anim_special_attack := false
 @export var particle_count_on_failure = 1
 @onready var particle_emitter = $CPUParticles2D
 
-
+var changing_size = false
 
 var last_direction := Vector2.ZERO
 var current_size = 0
@@ -214,6 +214,7 @@ func _on_dash_timer_timeout() -> void:
 	dash_cooldown_timer.start(dash_cooldown_time)
 
 func increase_size(value = 1):
+	changing_size = true
 	current_size = clampi(value + 1, 0, max_size)
 	MusicGlobalEvents.try_emit_size(current_size)
 	if can_super_attack():
@@ -223,6 +224,7 @@ func increase_size(value = 1):
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
+	tween.connect("finished", func(): changing_size = false )
 
 func drop_size():
 	current_size = 0
@@ -253,6 +255,10 @@ func _on_ghost_timer_timeout():
 	ghost_node.hframes = sprite.hframes
 	ghost_node.vframes = sprite.vframes
 	ghost_node.frame = sprite.frame #(dsmoliakov): hmmmm frame the last one to update as change of hframes and vframes clearing value
+	if (changing_size):
+		ghost_node.scale = Vector2(sizes[current_size-1], sizes[current_size-1])
+	else:
+		ghost_node.scale = Vector2(sizes[current_size], sizes[current_size])
 	get_parent().add_child(ghost_node)
 	if current_ghosts_count < ghosts_count_dash_in_time:
 		ghost_timer.start(ghosts_delay)
