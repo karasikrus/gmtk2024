@@ -3,7 +3,7 @@ extends Node2D
 var timelines_to_play = []
 
 var is_playing_right_now = false
-
+@export var timeline_autoskip_time = 0.4
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +18,7 @@ func play_on_beat():
 	if len(timelines_to_play) == 0 or is_playing_right_now:
 		return
 	Dialogic.play(timelines_to_play[0])
+	Dialogic.Inputs.auto_skip = timeline_autoskip_time
 	timelines_to_play.remove_at(0)
 	is_playing_right_now = true
 
