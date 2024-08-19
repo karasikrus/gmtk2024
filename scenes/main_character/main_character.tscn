@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://wxcqvavncu0b"]
+[gd_scene load_steps=22 format=3 uid="uid://wxcqvavncu0b"]
 
 [ext_resource type="Script" path="res://scenes/main_character/main_character.gd" id="1_dc8iu"]
 [ext_resource type="Texture2D" uid="uid://dqiwauvg5i3t" path="res://scenes/main_character/Айдл.png" id="2_6el5u"]
@@ -569,6 +569,15 @@ shader_parameter/number_of_images = Vector2(1, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1cy8j"]
 radius = 44.0114
 
+[sub_resource type="Gradient" id="Gradient_ma7h6"]
+offsets = PackedFloat32Array(0.645078, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2mdfb"]
+gradient = SubResource("Gradient_ma7h6")
+width = 4
+height = 4
+
 [node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
 script = ExtResource("1_dc8iu")
@@ -605,7 +614,7 @@ shape = SubResource("CircleShape2D_1cy8j")
 [node name="GhostTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Bats" type="CPUParticles2D" parent="."]
 position = Vector2(16, 17)
 emitting = false
 one_shot = true
@@ -620,6 +629,16 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 299.07
 initial_velocity_max = 366.83
 linear_accel_min = -11.5
+
+[node name="Dots" type="CPUParticles2D" parent="."]
+emitting = false
+one_shot = true
+texture = SubResource("GradientTexture2D_2mdfb")
+emission_shape = 1
+emission_sphere_radius = 58.83
+gravity = Vector2(0, 0)
+initial_velocity_min = 78.75
+initial_velocity_max = 111.9
 
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
