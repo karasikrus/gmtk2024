@@ -6,6 +6,7 @@ class_name BasicEnemy
 @export var on_hit_speed = 100
 @export var attack_cooldown_time = 1
 @onready var attack_cooldown_timer = $AttackCooldown
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 var is_freezed = false
@@ -99,10 +100,33 @@ func _on_beat_dash_start(t) -> void:
 	beat_dash_timer.start(beat_dash_time)
 	is_on_beat_dash = true
 	velocity = velocity.normalized() * speed_on_dash
+	start_dash_anim()
 	pass
 	
 
 
 func _on_beat_dash_timer_timeout() -> void:
+	print("stop_dash")
 	is_on_beat_dash = false
 	pass # Replace with function body.
+
+func _process(_delta: float) -> void:
+	animate_walk()
+
+
+#region Animations
+func start_dash_anim():
+	if velocity.x > 0:
+		animation_player.play("dash_right")
+	else:
+		animation_player.play("dash_left")
+
+func animate_walk():
+	if is_on_beat_dash:
+		return
+	if velocity.x > 0:
+		animation_player.play("walk_right")
+	else:
+		animation_player.play("walk_left")
+
+#endregion

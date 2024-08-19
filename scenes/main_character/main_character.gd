@@ -9,6 +9,16 @@ var is_in_dash_cooldown = false
 var is_dash_in_time = false
 var is_super_attack = false
 
+#region Anim vars
+
+var is_anim_walking := false
+var is_anim_in_good_dash := false
+var is_anim_in_bad_dash := false
+var is_anim_talking_hit := false
+var is_anim_special_attack := false
+
+#endregion
+
 @export var speed = 200
 @export var projectile_speed = 300
 
@@ -21,7 +31,6 @@ var is_super_attack = false
 @export var max_size = 5
 @export var super_attack_time = 0.2
 
-@export var beat_dash_time = 0.1
 @export var on_hit_flash_time = 0.5
 
 
@@ -34,9 +43,10 @@ var is_super_attack = false
 @onready var wavefront = load("res://scenes/explosion/explosion.tscn")
 
 @onready var sprite = $Sprite2D as Sprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-var last_direction = null
+var last_direction := Vector2.ZERO
 var current_size = 0
 
 var sizes = [1, 1.5, 2, 2.5, 3, 3.5]
@@ -50,8 +60,10 @@ func _process(delta):
 	if on_hit_flash_timer.time_left > 0:
 		var normalized_time = on_hit_flash_timer.time_left / on_hit_flash_time
 		sprite.material.set_shader_parameter("normalized_time", normalized_time as float)
+	animate()
 
 func _physics_process(delta):
+	
 	if is_freezed or is_died:
 		return
 	
@@ -61,15 +73,21 @@ func _physics_process(delta):
 	_process_super_attack(delta)
 	
 	move_and_slide()
+	
 
 
 func _process_WASD_input(delta):
 	if is_in_dash or is_super_attack:
+		is_anim_walking = false
 		return
 	var direction = Input.get_vector("left", "right", "up", "down")
 	if direction != Vector2(0.0, 0.0):
 		last_direction = direction
 	velocity = direction * speed
+	if velocity.length() > 0.01:
+		is_anim_walking = true
+	else:
+		is_anim_walking = false
 
 
 func _process_dash(delta):
@@ -196,3 +214,44 @@ func _on_super_attack_timer_timeout() -> void:
 
 func get_current_size() -> int:
 	return current_size
+
+
+#region Animation
+
+func animate():
+	if is_anim_walking:
+		animate_walk()
+	elif is_anim_in_good_dash:
+		pass
+	elif is_anim_in_bad_dash:
+		pass
+	elif is_anim_special_attack:
+		pass
+	else:
+		animate_idle() #idle anim
+
+func animate_walk():
+	animate_direction(last_direction, "walk_up", "walk_down", "walk_left", "walk_right")
+
+
+func animate_idle():
+	animate_direction(last_direction, "idle_up", "idle_down", "idle_left", "idle_right")
+
+
+func animate_direction(animation_direction: Vector2, up: String, down : String, left : String, right: String):
+	var anim_x = animation_direction.x
+	var anim_y = animation_direction.y
+	if abs(anim_x) > abs(anim_y):
+		if anim_x > 0:
+			animation_player.play(right)
+		else:
+			animation_player.play(left)
+	else:
+		if anim_y > 0:
+			animation_player.play(down)
+		else:
+			animation_player.play(up)
+
+
+
+#endregion

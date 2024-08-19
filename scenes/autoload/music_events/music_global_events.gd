@@ -6,7 +6,7 @@ signal measure(position)
 signal combo(streak)
 
 
-@export var pre_bit_interval = 0.1 #(dsmoliakov): how big interval in which we are hitting combo
+@export var pre_bit_interval = 0.17 #(dsmoliakov): how big interval in which we are hitting combo
 
 var combo_streak := 0
 var correct_notes := 0

@@ -30,8 +30,6 @@ autoplay = true
 
 [node name="BasicEnemy" parent="." instance=ExtResource("2_41msb")]
 position = Vector2(347, 355)
-speed = 0
-speed_on_dash = 0
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_s4ber")]
 position = Vector2(627, 359)
