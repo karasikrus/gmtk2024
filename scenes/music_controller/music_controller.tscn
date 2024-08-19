@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://5cp7s42peway"]
 
-[ext_resource type="AudioStream" uid="uid://cluvi7pd7si5i" path="res://scenes/music_controller/xzz (1).mp3" id="1_aaw51"]
+[ext_resource type="AudioStream" uid="uid://bte1txmycplxn" path="res://scenes/music_controller/jzz_instr_p3.mp3" id="1_le7eu"]
 [ext_resource type="Script" path="res://scenes/music_controller/music_controller.gd" id="1_tqegu"]
 
 [node name="MusicController" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_aaw51")
+stream = ExtResource("1_le7eu")
 parameters/looping = true
 script = ExtResource("1_tqegu")
 bpm = 134

@@ -4,6 +4,8 @@ signal pre_beat(position)
 signal beat(position)
 signal measure(position)
 signal combo(streak)
+signal size(new_size)
+signal big_size(is_big_size)
 
 
 @export var pre_bit_interval = 0.17 #(dsmoliakov): how big interval in which we are hitting combo
@@ -13,6 +15,7 @@ var correct_notes := 0
 
 @onready var correct_beat_timer = 0
 var accept
+var last_size := 0
 
 func _ready():
 	pass
@@ -47,3 +50,12 @@ func wrong_note():
 
 func get_correct_beat_time_left() -> float:
 	return correct_beat_timer
+	
+func try_emit_size(new_size: int):
+	if new_size == last_size:
+		return
+	size.emit(new_size)
+
+func emit_big_size(is_big: bool):
+	big_size.emit(is_big)
+	

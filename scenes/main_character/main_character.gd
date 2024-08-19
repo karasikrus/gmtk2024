@@ -9,6 +9,8 @@ var is_in_dash_cooldown = false
 var is_dash_in_time = false
 var is_super_attack = false
 
+@export var super_attack_threshold := 3
+
 #region Anim vars
 
 var is_anim_walking := false
@@ -194,11 +196,19 @@ func _on_dash_timer_timeout() -> void:
 
 func increase_size(value = 1):
 	current_size = clampi(value + 1, 0, max_size)
+	MusicGlobalEvents.try_emit_size(current_size)
+	if can_super_attack():
+		MusicGlobalEvents.emit_big_size(true)
+	else:
+		MusicGlobalEvents.emit_big_size(false)
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
 
 func drop_size():
 	current_size = 0
+	MusicGlobalEvents.try_emit_size(current_size)
+	MusicGlobalEvents.emit_big_size(false)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
 
@@ -206,7 +216,7 @@ func _on_dash_cooldown_timer_timeout() -> void:
 	is_in_dash_cooldown = false
 
 func can_super_attack() -> bool:
-	return current_size > 0
+	return current_size > super_attack_threshold
 
 func _on_super_attack_timer_timeout() -> void:
 	is_super_attack = false
