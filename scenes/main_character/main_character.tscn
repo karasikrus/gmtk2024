@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://wxcqvavncu0b"]
+[gd_scene load_steps=24 format=3 uid="uid://wxcqvavncu0b"]
 
 [ext_resource type="Script" path="res://scenes/main_character/main_character.gd" id="1_dc8iu"]
 [ext_resource type="Texture2D" uid="uid://dqiwauvg5i3t" path="res://scenes/main_character/Айдл.png" id="2_6el5u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dc4etacqfvf6f" path="res://scenes/main_character/Шаг.png" id="3_tws7s"]
 [ext_resource type="Texture2D" uid="uid://bmi2g0b71fmef" path="res://scenes/main_character/Рывок удачный.png" id="4_ga8af"]
 [ext_resource type="Texture2D" uid="uid://cgmoo4jaacvq" path="res://scenes/main_character/bat.png" id="6_dhj6x"]
+[ext_resource type="PackedScene" uid="uid://dm55v8detqela" path="res://scenes/border/border.tscn" id="7_8gag0"]
 
 [sub_resource type="Animation" id="Animation_147m2"]
 length = 0.001
@@ -569,14 +570,19 @@ shader_parameter/number_of_images = Vector2(1, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1cy8j"]
 radius = 44.0114
 
+[sub_resource type="Gradient" id="Gradient_6ebyt"]
+offsets = PackedFloat32Array(0, 0.488095, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.904762, 1, 1, 1, 0)
+
 [sub_resource type="Gradient" id="Gradient_ma7h6"]
-offsets = PackedFloat32Array(0.645078, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.0614754, 0.229508, 0.397541, 0.536885, 0.672131, 0.852459)
+colors = PackedColorArray(1, 0, 0, 1, 0.25, 0.00195313, 0.00195313, 1, 0.339844, 0.0305328, 0.0305328, 1, 0.340105, 0.0306974, 0.0306974, 0.803975, 0.340348, 0.0308503, 0.0308503, 0.621951, 0.341176, 0.0313726, 0.0313726, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2mdfb"]
 gradient = SubResource("Gradient_ma7h6")
-width = 4
-height = 4
+fill = 1
+fill_from = Vector2(0.470085, 0.57265)
+fill_to = Vector2(0.179487, 0.0940171)
 
 [node name="MainCharacter" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
@@ -628,10 +634,17 @@ spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 299.07
 initial_velocity_max = 366.83
+angular_velocity_max = 1.0
+orbit_velocity_max = 0.1
 linear_accel_min = -11.5
+radial_accel_min = 2.67
+radial_accel_max = 5.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_6ebyt")
 
 [node name="Dots" type="CPUParticles2D" parent="."]
 emitting = false
+lifetime = 0.5
 one_shot = true
 texture = SubResource("GradientTexture2D_2mdfb")
 emission_shape = 1
@@ -639,6 +652,10 @@ emission_sphere_radius = 58.83
 gravity = Vector2(0, 0)
 initial_velocity_min = 78.75
 initial_velocity_max = 111.9
+scale_amount_min = 0.1
+scale_amount_max = 0.25
+
+[node name="Border" parent="." instance=ExtResource("7_8gag0")]
 
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

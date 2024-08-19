@@ -106,7 +106,6 @@ func _on_beat_dash_start(t) -> void:
 
 
 func _on_beat_dash_timer_timeout() -> void:
-	print("stop_dash")
 	is_on_beat_dash = false
 	pass # Replace with function body.
 

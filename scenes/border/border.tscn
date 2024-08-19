@@ -1,41 +1,175 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm55v8detqela"]
+[gd_scene load_steps=6 format=3 uid="uid://dm55v8detqela"]
 
 [ext_resource type="Script" path="res://scenes/border/border.gd" id="1_wwnrf"]
 [ext_resource type="Texture2D" uid="uid://cguc2og2tqwhm" path="res://scenes/border/frame beat.png" id="1_xhwwd"]
+[ext_resource type="Texture2D" uid="uid://c3fabslpod3l5" path="res://scenes/border/frame still.png" id="2_m4hak"]
+[ext_resource type="Texture2D" uid="uid://bq84hpowjj5i" path="res://scenes/border/frame full.png" id="4_mpu5s"]
+[ext_resource type="Texture2D" uid="uid://b8mh4jojaalm4" path="res://scenes/border/frame sad.png" id="5_82hk8"]
 
 [node name="Border" type="CanvasLayer"]
 script = ExtResource("1_wwnrf")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Beat" type="Control" parent="."]
 unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(960, 540)
+
+[node name="TextureRect" type="TextureRect" parent="Beat"]
+unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+texture = ExtResource("2_m4hak")
+
+[node name="TextureRectBetter" type="TextureRect" parent="Beat"]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0.914063, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 mouse_filter = 2
 texture = ExtResource("1_xhwwd")
 
-[node name="TextureRectFixed" type="TextureRect" parent="."]
+[node name="TextureRectFull" type="TextureRect" parent="Beat"]
 unique_name_in_owner = true
+modulate = Color(1, 0.25, 0.25, 1)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+texture = ExtResource("4_mpu5s")
+
+[node name="TextureRectSad" type="TextureRect" parent="Beat"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+texture = ExtResource("5_82hk8")
+
+[node name="Fixed" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRectFixed" type="TextureRect" parent="Fixed"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+texture = ExtResource("2_m4hak")
+
+[node name="TextureRectFixedBetter" type="TextureRect" parent="Fixed"]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0.914063, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 mouse_filter = 2
 texture = ExtResource("1_xhwwd")
+
+[node name="TextureRectFixedFull" type="TextureRect" parent="Fixed"]
+unique_name_in_owner = true
+modulate = Color(1, 0.25, 0.25, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+texture = ExtResource("4_mpu5s")
+
+[node name="TextureRectFixedSad" type="TextureRect" parent="Fixed"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+texture = ExtResource("5_82hk8")

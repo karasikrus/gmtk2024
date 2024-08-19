@@ -166,7 +166,8 @@ func _process_super_attack(delta):
 	
 	is_super_attack = true
 	super_attack_timer.start(super_attack_time)
-	drop_size()	
+	drop_size()
+	MusicGlobalEvents.update_combo_state(MusicGlobalEvents.ComboState.SMALL_COMBO)
 	pass
 
 
@@ -213,6 +214,7 @@ func get_hit(damage = 1, force_give_hit = false):
 	else:
 		on_hit_flash_timer.start(on_hit_flash_time)
 		drop_size()
+		MusicGlobalEvents.update_combo_state(MusicGlobalEvents.ComboState.NO_COMBO)
 
 func _on_dash_timer_timeout() -> void:
 	is_in_dash = false
@@ -223,12 +225,11 @@ func _on_dash_timer_timeout() -> void:
 
 func increase_size(value = 1):
 	changing_size = true
-	current_size = clampi(value + 1, 0, max_size)
-	MusicGlobalEvents.try_emit_size(current_size)
+	current_size = clampi(current_size + value, 0, max_size)
 	if can_super_attack():
-		MusicGlobalEvents.emit_big_size(true)
+		MusicGlobalEvents.update_combo_state(MusicGlobalEvents.ComboState.BIG_COMBO)
 	else:
-		MusicGlobalEvents.emit_big_size(false)
+		MusicGlobalEvents.update_combo_state(MusicGlobalEvents.ComboState.SMALL_COMBO)
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
@@ -236,8 +237,6 @@ func increase_size(value = 1):
 
 func drop_size():
 	current_size = 0
-	MusicGlobalEvents.try_emit_size(current_size)
-	MusicGlobalEvents.emit_big_size(false)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "scale", Vector2(sizes[current_size], sizes[current_size]), 0.1)
 

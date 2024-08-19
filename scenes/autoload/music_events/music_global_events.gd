@@ -6,6 +6,7 @@ signal measure(position)
 signal combo(streak)
 signal size(new_size)
 signal big_size(is_big_size)
+signal combo_state_changed(combo_state)
 
 
 @export var pre_bit_interval = 0.17 #(dsmoliakov): how big interval in which we are hitting combo
@@ -16,6 +17,14 @@ var correct_notes := 0
 @onready var correct_beat_timer = 0
 var accept
 var last_size := 0
+
+enum ComboState{
+	NO_COMBO,
+	SMALL_COMBO,
+	BIG_COMBO
+}
+
+var current_combo_state := ComboState.NO_COMBO
 
 func _ready():
 	pass
@@ -55,7 +64,20 @@ func try_emit_size(new_size: int):
 	if new_size == last_size:
 		return
 	size.emit(new_size)
+	if new_size > 0 and current_combo_state != ComboState.BIG_COMBO:
+		update_combo_state(ComboState.SMALL_COMBO)
+	elif new_size == 0:
+		update_combo_state(ComboState.NO_COMBO)
 
 func emit_big_size(is_big: bool):
+	if is_big:
+		update_combo_state(ComboState.BIG_COMBO)
 	big_size.emit(is_big)
-	
+
+func update_combo_state(new_state: ComboState):
+	if new_state == current_combo_state:
+		return
+	current_combo_state = new_state
+	print("NEW_COMBO_STATE")
+	print(current_combo_state)
+	combo_state_changed.emit(current_combo_state)
