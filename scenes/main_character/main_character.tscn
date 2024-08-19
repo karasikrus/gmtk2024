@@ -601,6 +601,10 @@ shape = SubResource("CircleShape2D_1cy8j")
 
 [node name="OnHitFlashTimer" type="Timer" parent="."]
 
+[node name="GhostTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="SuperAttackTimer" to="." method="_on_super_attack_timer_timeout"]
+[connection signal="timeout" from="GhostTimer" to="." method="_on_ghost_timer_timeout"]

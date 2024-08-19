@@ -34,29 +34,36 @@ var is_anim_special_attack := false
 @export var super_attack_time = 0.2
 
 @export var on_hit_flash_time = 0.5
-
+@export var ghosts_count_dash_in_time = 3
+@export var ghosts_count_dash_not_in_time = 1
+@export var ghosts_delay = 0.05
 
 @onready var dash_cooldown_timer = $DashCooldownTimer
 @onready var dash_timer = $DashTimer
 @onready var super_attack_timer = $SuperAttackTimer
 @onready var on_hit_flash_timer = $OnHitFlashTimer
+@onready var ghost_timer = $GhostTimer
 
 @onready var projectile = load("res://scenes/projectile/projectile.tscn")
 @onready var wavefront = load("res://scenes/explosion/explosion.tscn")
+
+@onready var ghost = load("res://scenes/main_character/player_ghost.tscn")
 
 @onready var sprite = $Sprite2D as Sprite2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
+
 var last_direction := Vector2.ZERO
 var current_size = 0
-
+var current_ghosts_count = 0
 var sizes = [1, 1.5, 2, 2.5, 3, 3.5]
 
 func _ready():
 	dash_timer.one_shot = true
 	dash_cooldown_timer.one_shot = true
 	on_hit_flash_timer.one_shot = true
+	ghost_timer.one_shot = true
 
 func _process(delta):
 	if on_hit_flash_timer.time_left > 0:
@@ -101,9 +108,11 @@ func _process_dash(delta):
 		
 	var dash_speed = 0 
 	var acceptance_time_left = MusicGlobalEvents.get_correct_beat_time_left()
+	
 	if acceptance_time_left > 0:
 		dash_speed = dash_speed_in_time
 		is_dash_in_time = true
+		ghost_timer.start(ghosts_delay)
 		prints("dash in time")
 	else:
 		dash_speed = dash_speed_not_in_time
@@ -224,6 +233,21 @@ func _on_super_attack_timer_timeout() -> void:
 
 func get_current_size() -> int:
 	return current_size
+
+func _on_ghost_timer_timeout():
+	current_ghosts_count += 1
+	var ghost_node = ghost.instantiate()
+	ghost_node.texture = sprite.texture
+
+	ghost_node.global_position = sprite.global_position
+	ghost_node.hframes = sprite.hframes
+	ghost_node.vframes = sprite.vframes
+	ghost_node.frame = sprite.frame #(dsmoliakov): hmmmm frame the last one to update as change of hframes and vframes clearing value
+	get_parent().add_child(ghost_node)
+	if current_ghosts_count < ghosts_count_dash_in_time:
+		ghost_timer.start(ghosts_delay)
+	else:
+		current_ghosts_count = 0
 
 
 #region Animation
