@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://wxcqvavncu0b"]
+[gd_scene load_steps=20 format=3 uid="uid://wxcqvavncu0b"]
 
 [ext_resource type="Script" path="res://scenes/main_character/main_character.gd" id="1_dc8iu"]
 [ext_resource type="Texture2D" uid="uid://dqiwauvg5i3t" path="res://scenes/main_character/Айдл.png" id="2_6el5u"]
 [ext_resource type="Shader" path="res://scenes/main_character/main_character.gdshader" id="2_uom5o"]
 [ext_resource type="Texture2D" uid="uid://dc4etacqfvf6f" path="res://scenes/main_character/Шаг.png" id="3_tws7s"]
 [ext_resource type="Texture2D" uid="uid://bmi2g0b71fmef" path="res://scenes/main_character/Рывок удачный.png" id="4_ga8af"]
+[ext_resource type="Texture2D" uid="uid://cgmoo4jaacvq" path="res://scenes/main_character/bat.png" id="6_dhj6x"]
 
 [sub_resource type="Animation" id="Animation_147m2"]
 length = 0.001
@@ -603,6 +604,22 @@ shape = SubResource("CircleShape2D_1cy8j")
 
 [node name="GhostTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(16, 17)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("6_dhj6x")
+emission_shape = 1
+emission_sphere_radius = 40.77
+particle_flag_align_y = true
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 299.07
+initial_velocity_max = 366.83
+linear_accel_min = -11.5
 
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

@@ -10,3 +10,7 @@ gradient = SubResource("Gradient_l51jd")
 [node name="PlayerGhost" type="Sprite2D"]
 texture = SubResource("GradientTexture2D_26wct")
 script = ExtResource("1_3y0y2")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

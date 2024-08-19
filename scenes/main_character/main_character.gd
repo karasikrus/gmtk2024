@@ -53,6 +53,13 @@ var is_anim_special_attack := false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
+#particles
+
+@export var particle_count_on_success = 6
+@export var particle_count_on_failure = 1
+@onready var particle_emitter = $CPUParticles2D
+
+
 
 var last_direction := Vector2.ZERO
 var current_size = 0
@@ -113,10 +120,13 @@ func _process_dash(delta):
 		dash_speed = dash_speed_in_time
 		is_dash_in_time = true
 		ghost_timer.start(ghosts_delay)
+		particle_emitter.amount = particle_count_on_success
 		prints("dash in time")
 	else:
 		dash_speed = dash_speed_not_in_time
+		particle_emitter.amount = particle_count_on_failure
 		prints("dash not in time")
+	particle_emitter.restart()
 	var dash_time_offset = acceptance_time_left - MusicGlobalEvents.pre_bit_interval #(dsmoliakov): we might to adapt this to non symmetric interval
 	velocity = last_direction * dash_speed
 	dash_timer.start(dash_cooldown_time + dash_time_offset)
