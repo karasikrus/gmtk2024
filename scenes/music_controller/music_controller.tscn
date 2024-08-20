@@ -9,3 +9,5 @@ parameters/looping = true
 script = ExtResource("1_tqegu")
 bpm = 134
 beat_in_measure = 3
+
+[node name="MuteOutTimer" type="Timer" parent="."]

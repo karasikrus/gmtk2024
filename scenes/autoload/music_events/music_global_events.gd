@@ -8,7 +8,6 @@ signal size(new_size)
 signal big_size(is_big_size)
 signal combo_state_changed(combo_state)
 
-
 @export var pre_bit_interval = 0.17 #(dsmoliakov): how big interval in which we are hitting combo
 
 var combo_streak := 0

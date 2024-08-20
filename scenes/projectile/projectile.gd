@@ -23,3 +23,5 @@ func _on_body_entered(body: Node2D) -> void:
 		body.get_hit(Vector2(0, 0), true, was_on_beat)
 	if body.is_in_group("strong_breakable_wall"):
 		body.destroy_wall()
+	if body.is_in_group("boss"):
+		body.get_hit(true, was_on_beat)

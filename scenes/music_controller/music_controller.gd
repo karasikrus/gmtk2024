@@ -12,7 +12,8 @@ var last_reported_beat = 0
 var measure = 1
 var pre_beat_passed = false
 
-
+@export var music_change_time = 1
+@onready var timer = $MuteOutTimer
 
 func _ready():
 	sec_per_beat = 60.0 / bpm
@@ -67,7 +68,8 @@ func _process(delta: float) -> void:
 
 func on_beat(beat_number : int):
 	pass
-	
 
 func combo_check(combo_num):
 	pass
+
+	

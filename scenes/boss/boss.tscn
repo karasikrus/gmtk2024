@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyddvf2whayqg"]
+
+[ext_resource type="Script" path="res://scenes/boss/boss.gd" id="1_2nkku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bl3q"]
+size = Vector2(60, 60)
+
+[sub_resource type="Gradient" id="Gradient_bxg8i"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gmtby"]
+gradient = SubResource("Gradient_bxg8i")
+
+[node name="Boss" type="StaticBody2D" groups=["boss"]]
+script = ExtResource("1_2nkku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_2bl3q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_gmtby")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="SpawnPoint1" type="Node2D" parent="SpawnPoints"]
+position = Vector2(2, 69)
+
+[node name="SpawnPointsSecondStage" type="Node2D" parent="."]
+
+[node name="SpawnPoint1" type="Node2D" parent="SpawnPointsSecondStage"]
+position = Vector2(61.835, 0)
+
+[node name="SecondStageProjectilSpawnPoints" type="Node2D" parent="."]
+
+[node name="SpawnPoint1" type="Node2D" parent="SecondStageProjectilSpawnPoints"]
+position = Vector2(-64.145, 0)
+
+[node name="SpawnPoint2" type="Node2D" parent="SecondStageProjectilSpawnPoints"]
+position = Vector2(58.79, 0)

@@ -16,8 +16,8 @@ var has_armour = true
 var is_charging = false
 @onready var health = max_health
 
-@export var on_hit_cooldown_time = 0.1
-@onready var on_hit_cooldown_timer = $OnHitCooldown
+#@export var on_hit_cooldown_time = 0.1
+#@onready var on_hit_cooldown_timer = $OnHitCooldown
 
 @onready var attack_zone_node = $AttackZone
 @onready var attack_zone_area = $AttackZone/AttackZoneArea

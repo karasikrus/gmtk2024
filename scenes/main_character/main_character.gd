@@ -8,8 +8,11 @@ var is_in_dash = false #(dsmoliakov): also acting as invicibility in get_hit
 var is_in_dash_cooldown = false
 var is_dash_in_time = false
 var is_super_attack = false
+var is_invincible = false
 
 @export var super_attack_threshold := 3
+
+signal increased_size_signal(size)
 
 #region Anim vars
 
@@ -153,7 +156,7 @@ func _process_super_attack(delta):
 	projectile_node.direction = last_direction
 	projectile_node.velocity = projectile_speed
 	projectile_node.size = current_size
-	projectile_node.was_on_beat = is_dash_in_time
+	projectile_node.was_on_beat = MusicGlobalEvents.get_correct_beat_time_left()
 	get_parent().add_child(projectile_node)
 	
 	var wavefront_node = wavefront.instantiate() as Explosion
@@ -161,7 +164,7 @@ func _process_super_attack(delta):
 	wavefront_node.radius = 10
 	wavefront_node.starting_radius = 0
 	wavefront_node.time = 1
-	wavefront_node.was_on_beat = is_dash_in_time
+	wavefront_node.was_on_beat = MusicGlobalEvents.get_correct_beat_time_left()
 	get_parent().add_child(wavefront_node)
 	
 	is_super_attack = true
@@ -183,6 +186,7 @@ func _process_collision(delta):
 			var success = collider.get_hit(last_direction, false, is_dash_in_time)
 			if success:
 				increase_size(1)
+				increased_size_signal.emit(current_size)
 			var enemy_died = collider.is_died
 			if not enemy_died:
 				last_direction = -last_direction
@@ -205,6 +209,8 @@ func _process_collision(delta):
 		get_hit(1, true)
 
 func get_hit(damage = 1, force_give_hit = false):
+	if is_invincible:
+		return
 	if (is_in_dash or is_super_attack) and !force_give_hit:
 		return
 		
