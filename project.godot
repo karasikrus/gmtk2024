@@ -22,8 +22,8 @@ SceneTransition="*res://scenes/autoload/scene_transition.tscn"
 LevelManager="*res://scenes/autoload/level_manager.gd"
 MusicGlobalEvents="*res://scenes/autoload/music_events/music_global_events.tscn"
 EnemyManager="*res://scenes/autoload/enemy_manager/enemy_manager.tscn"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 DialogPlayer="*res://scenes/autoload/dialog_player/dialog_player.tscn"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
@@ -113,6 +113,10 @@ super_attack={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(271, 36),"global_position":Vector2(285, 106),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_5="wall"
 
 [rendering]
 

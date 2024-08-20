@@ -108,7 +108,7 @@ func _process(delta: float) -> void:
 	spawn_enemies_on_second_stage()
 
 func fire_projectile_on_beat(t):
-	#fire_projectiles_on_first_stage()
+	fire_projectiles_on_first_stage()
 	fire_projectiles_on_second_stage()
 	pass # Replace with function body.
 

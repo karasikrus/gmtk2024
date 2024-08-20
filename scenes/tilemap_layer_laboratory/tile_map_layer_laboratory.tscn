@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba7dn3gjf4vkp"]
+
+[ext_resource type="Texture2D" uid="uid://cncr1u6gh6ksh" path="res://scenes/tilemap_layer_laboratory/vampire tileset.png" id="1_hxhox"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_vupst"]
+tile_data = PackedInt32Array(0, 393217, 2, 65536, 458753, 2, 1, 458753, 2, 65537, 393217, 2)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8eqd"]
+texture = ExtResource("1_hxhox")
+margins = Vector2i(126, 124)
+texture_region_size = Vector2i(128, 128)
+1:4/0 = 0
+1:4/0/z_index = 100
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:4/0 = 0
+0:4/0/z_index = 100
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:5/0 = 0
+0:5/0/z_index = 100
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:6/0 = 0
+0:6/0/z_index = 100
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:6/0 = 0
+1:6/0/z_index = 100
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -2, 64, -3, 64, 64, -64, 64)
+2:6/0 = 0
+2:6/0/z_index = 100
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -2, 64, -3, 64, 64, -64, 64)
+2:7/0 = 0
+2:7/0/z_index = 100
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:8/0 = 0
+2:8/0/z_index = 100
+2:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:8/0 = 0
+3:8/0/z_index = 100
+3:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -2, 64, -3, 64, 64, -64, 64)
+4:8/0 = 0
+4:8/0/z_index = 100
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+4:7/0 = 0
+4:7/0/z_index = 100
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+4:6/0 = 0
+4:6/0/z_index = 100
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -2, 64, -3, 64, 64, -64, 64)
+5:6/0 = 0
+5:6/0/z_index = 100
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -2, 64, -3, 64, 64, -64, 64)
+3:5/0 = 0
+3:5/0/z_index = 100
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:4/0 = 0
+2:4/0/z_index = 100
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:3/0 = 0
+2:3/0/z_index = 100
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:2/0 = 0
+2:2/0/z_index = 100
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:2/0 = 0
+3:2/0/z_index = 100
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+4:2/0 = 0
+4:2/0/z_index = 100
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+4:3/0 = 0
+4:3/0/z_index = 100
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+4:4/0 = 0
+4:4/0/z_index = 100
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+5:4/0 = 0
+5:4/0/z_index = 100
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+6:4/0 = 0
+6:4/0/z_index = 100
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+6:5/0 = 0
+6:5/0/z_index = 100
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+6:6/0 = 0
+6:6/0/z_index = 100
+6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+6:2/0 = 0
+7:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ys36s"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 16
+sources/1 = SubResource("TileSetAtlasSource_x8eqd")
+pattern_0 = SubResource("TileMapPattern_vupst")
+
+[node name="TileMapLayerLaboratory" type="TileMapLayer"]
+tile_set = SubResource("TileSet_ys36s")
