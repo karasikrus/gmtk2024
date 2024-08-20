@@ -122,6 +122,7 @@ _data = {
 
 [node name="DialogPlayer" type="Node2D"]
 script = ExtResource("1_7skfh")
+timeline_autoskip_time = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 101

@@ -34,7 +34,14 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "enemy1": "res://timelines/enemy1.dtl",
+"final1": "res://final1.dtl",
+"final2": "res://final2.dtl",
+"final3": "res://final3.dtl",
+"final4": "res://final4.dtl",
 "intro1": "res://timelines/intro1.dtl",
+"intro2": "res://intro2.dtl",
+"intro3": "res://intro3.dtl",
+"intro4": "res://intro4.dtl",
 "timeline": "res://scenes/dialogues/timelines/short_timeline_test/timeline.dtl",
 "timeline_test": "res://scenes/dialogues/timelines/timeline_test.dtl"
 }
@@ -46,7 +53,7 @@ variables={
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
-text/autoadvance_per_character_delay=0.1
+text/autoadvance_per_character_delay=0
 text/autoadvance_ignored_characters_enabled=true
 animations/join_default_length=0.0
 animations/leave_default_length=0.0
@@ -65,6 +72,8 @@ animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimatio
 animations/leave_default="res://addons/dialogic/Modules/Character/DefaultAnimations/instant_in_or_out.gd"
 portraits/default_portrait=""
 text/autopauses={}
+text/autoadvance_fixed_delay=2.8
+text/autoadvance_per_word_delay=0
 
 [display]
 

@@ -28,7 +28,7 @@ overrides = {
 "box_size": "Vector2(470, 180)",
 "portrait_stretch_factor": "1.0",
 "text_custom_color": "Color(1, 0.507813, 0.507813, 1)",
-"text_custom_size": "30.0",
+"text_custom_size": "27.0",
 "text_use_global_color": "false",
 "text_use_global_size": "false"
 }

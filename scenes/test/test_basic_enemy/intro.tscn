@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cgw447j5hocy0"]
+[gd_scene load_steps=17 format=3 uid="uid://cgw447j5hocy0"]
 
 [ext_resource type="Script" path="res://scenes/test/test_basic_enemy/intro.gd" id="1_11lvc"]
 [ext_resource type="Texture2D" uid="uid://bnbcqeo40cdbn" path="res://scenes/test/test_basic_enemy/Outro1.png" id="1_uh6yc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b1yeyj32vrg4s" path="res://scenes/test/test_basic_enemy/Intro5.png" id="9_4nhpf"]
 [ext_resource type="Texture2D" uid="uid://pokmbeajylg5" path="res://scenes/test/test_basic_enemy/Intro6.png" id="10_4ien6"]
 [ext_resource type="Texture2D" uid="uid://6qhdp1ffw4kb" path="res://scenes/test/test_basic_enemy/Intro7.jpeg" id="11_d8y5k"]
+[ext_resource type="AudioStream" uid="uid://cs4f5y57c1iv6" path="res://scenes/music_controller/jzz_instr_lastv.mp3" id="12_4idrl"]
 
 [sub_resource type="Animation" id="Animation_p6g1f"]
 length = 0.001
@@ -46,7 +47,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_qqc1g"]
 resource_name = "intro"
-length = 21.0
+length = 45.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,7 +56,7 @@ tracks/0/path = NodePath("TextureRect:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 6, 9, 12, 15, 18),
+"times": PackedFloat32Array(0, 9, 15, 17, 20, 31, 43),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("4_8vlul"), ExtResource("6_3hb3a"), ExtResource("7_0tkni"), ExtResource("8_gebdp"), ExtResource("9_4nhpf"), ExtResource("10_4ien6"), ExtResource("11_d8y5k")]
@@ -67,11 +68,37 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(21),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 9, 15, 35, 45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [],
+"method": &"dialog_1"
+}, {
+"args": [],
+"method": &"dialog_2"
+}, {
+"args": [],
+"method": &"dialog_3"
+}, {
+"args": [],
+"method": &"dialog_4"
+}, {
+"args": [],
 "method": &"next"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 
@@ -102,3 +129,7 @@ libraries = {
 "": SubResource("AnimationLibrary_8wp5y")
 }
 autoplay = "intro"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_4idrl")
+bus = &"music"

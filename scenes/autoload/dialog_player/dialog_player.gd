@@ -26,8 +26,9 @@ func play_dialog(picture_type, dialog):
 		animation_player.play("boss")
 	
 func hide_all():
+	animation_player.play("RESET")
 	Dialogic.end_timeline()
-	animation_player.play("noone")
+	
 
 func add_to_play(timeline):
 	timelines_to_play.append(timeline)

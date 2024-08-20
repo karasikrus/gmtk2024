@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://doui76a7efpm8"]
+[gd_scene load_steps=9 format=3 uid="uid://doui76a7efpm8"]
 
+[ext_resource type="Script" path="res://scenes/test/test_basic_enemy/final.gd" id="1_22t3d"]
 [ext_resource type="Texture2D" uid="uid://bnbcqeo40cdbn" path="res://scenes/test/test_basic_enemy/Outro1.png" id="1_juwts"]
 [ext_resource type="Texture2D" uid="uid://djxrg6c3aak68" path="res://scenes/test/test_basic_enemy/Outro2.png" id="2_5ilhw"]
 [ext_resource type="Texture2D" uid="uid://bvyv8fyglkxpc" path="res://scenes/test/test_basic_enemy/Outro3.png" id="3_8v1yf"]
+[ext_resource type="AudioStream" uid="uid://b6crd1i6v27w5" path="res://scenes/basic_enemy/bss.mp3" id="5_7ituw"]
 
 [sub_resource type="Animation" id="Animation_p6g1f"]
 length = 0.001
@@ -21,7 +23,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ixeil"]
 resource_name = "deafult"
-length = 10.0
+length = 50.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -30,10 +32,33 @@ tracks/0/path = NodePath("TextureRect:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3, 6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 6, 14, 26),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_juwts"), ExtResource("2_5ilhw"), ExtResource("3_8v1yf")]
+"values": [ExtResource("1_juwts"), ExtResource("2_5ilhw"), ExtResource("1_juwts"), ExtResource("3_8v1yf")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 6, 14, 26),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"dialog_1"
+}, {
+"args": [],
+"method": &"dialog_2"
+}, {
+"args": [],
+"method": &"dialog_3"
+}, {
+"args": [],
+"method": &"dialog_4"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8wp5y"]
@@ -49,6 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_22t3d")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -61,3 +87,9 @@ libraries = {
 "": SubResource("AnimationLibrary_8wp5y")
 }
 autoplay = "deafult"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7ituw")
+volume_db = -25.0
+autoplay = true
+bus = &"music"
