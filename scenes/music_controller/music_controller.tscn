@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://scenes/music_controller/music_controller.gd" id="1_tqegu"]
 [ext_resource type="AudioStream" uid="uid://cs4f5y57c1iv6" path="res://scenes/music_controller/jzz_instr_lastv.mp3" id="1_ugh6q"]
 
-[node name="MusicController" type="AudioStreamPlayer2D"]
+[node name="MusicController" type="AudioStreamPlayer"]
 stream = ExtResource("1_ugh6q")
-max_distance = 20000.0
 bus = &"music"
 playback_type = 1
 parameters/looping = true

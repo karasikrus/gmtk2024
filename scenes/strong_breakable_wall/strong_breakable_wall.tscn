@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp8oxmtlsjkxa"]
+[gd_scene load_steps=5 format=3 uid="uid://bp8oxmtlsjkxa"]
 
 [ext_resource type="Script" path="res://scenes/strong_breakable_wall/strong_breakable_wall.gd" id="1_i04to"]
-
-[sub_resource type="Gradient" id="Gradient_k4eu5"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_k11d7"]
-gradient = SubResource("Gradient_k4eu5")
+[ext_resource type="Texture2D" uid="uid://chevgpw6ejrjv" path="res://scenes/basic_enemy/vampire doors.png" id="2_j60ah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2pk1"]
-size = Vector2(64, 64)
+size = Vector2(253, 125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b5kx"]
 size = Vector2(259, 181)
@@ -17,15 +13,23 @@ size = Vector2(259, 181)
 script = ExtResource("1_i04to")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["strong_breakable_wall"]]
-texture = SubResource("GradientTexture2D_k11d7")
+texture = ExtResource("2_j60ah")
+hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_l2pk1")
 
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="Node2D" type="Node2D" parent="SpawnPoints"]
-position = Vector2(-59.08, 0)
+position = Vector2(-86, 106)
+
+[node name="Node2D2" type="Node2D" parent="SpawnPoints"]
+position = Vector2(2, 185)
+
+[node name="Node2D3" type="Node2D" parent="SpawnPoints"]
+position = Vector2(104, 83)
 
 [node name="SpawnZone" type="Area2D" parent="."]
 

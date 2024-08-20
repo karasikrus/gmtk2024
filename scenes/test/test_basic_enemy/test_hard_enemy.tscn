@@ -41,7 +41,7 @@ drag_right_margin = 0.7
 drag_bottom_margin = 0.7
 
 [node name="StrongBasicEnemy" parent="." instance=ExtResource("5_r7vm2")]
-position = Vector2(664, 568)
+position = Vector2(948, -26)
 
 [node name="TriggerArea" parent="." instance=ExtResource("6_auxgb")]
 position = Vector2(73, -68)

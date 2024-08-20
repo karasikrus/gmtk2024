@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 class_name MusicController
 @export var bpm := 80	
 @export var measures := 4

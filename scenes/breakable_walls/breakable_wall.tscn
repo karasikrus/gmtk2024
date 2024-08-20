@@ -1,22 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://da5lq21bgk25n"]
+[gd_scene load_steps=4 format=3 uid="uid://da5lq21bgk25n"]
 
 [ext_resource type="Script" path="res://scenes/breakable_walls/breakable_wall.gd" id="1_gbpip"]
+[ext_resource type="Texture2D" uid="uid://chevgpw6ejrjv" path="res://scenes/basic_enemy/vampire doors.png" id="2_hjehg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ndky"]
-size = Vector2(64, 64)
-
-[sub_resource type="Gradient" id="Gradient_uf5ch"]
-offsets = PackedFloat32Array(0.549784)
-colors = PackedColorArray(0.716379, 0.63216, 0.724014, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r7d36"]
-gradient = SubResource("Gradient_uf5ch")
+size = Vector2(253, 123.5)
 
 [node name="BreakableWall" type="StaticBody2D" groups=["breakable_wall"]]
 script = ExtResource("1_gbpip")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["breakable_wall"]]
-shape = SubResource("RectangleShape2D_6ndky")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_r7d36")
+texture = ExtResource("2_hjehg")
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["breakable_wall"]]
+visible = false
+position = Vector2(-1, 1.25)
+shape = SubResource("RectangleShape2D_6ndky")

@@ -1,0 +1,104 @@
+[gd_scene load_steps=16 format=3 uid="uid://cgw447j5hocy0"]
+
+[ext_resource type="Script" path="res://scenes/test/test_basic_enemy/intro.gd" id="1_11lvc"]
+[ext_resource type="Texture2D" uid="uid://bnbcqeo40cdbn" path="res://scenes/test/test_basic_enemy/Outro1.png" id="1_uh6yc"]
+[ext_resource type="Texture2D" uid="uid://djxrg6c3aak68" path="res://scenes/test/test_basic_enemy/Outro2.png" id="2_7xqof"]
+[ext_resource type="Texture2D" uid="uid://bvyv8fyglkxpc" path="res://scenes/test/test_basic_enemy/Outro3.png" id="3_0c3ml"]
+[ext_resource type="Texture2D" uid="uid://b2g54pkv1k7nk" path="res://scenes/test/test_basic_enemy/Intro1.png" id="4_8vlul"]
+[ext_resource type="Texture2D" uid="uid://clqdjqcrucbii" path="res://scenes/test/test_basic_enemy/Intro2.png" id="6_3hb3a"]
+[ext_resource type="Texture2D" uid="uid://080viimay3rx" path="res://scenes/test/test_basic_enemy/Intro3.png" id="7_0tkni"]
+[ext_resource type="Texture2D" uid="uid://digbijtcb24as" path="res://scenes/test/test_basic_enemy/Intro4.png" id="8_gebdp"]
+[ext_resource type="Texture2D" uid="uid://b1yeyj32vrg4s" path="res://scenes/test/test_basic_enemy/Intro5.png" id="9_4nhpf"]
+[ext_resource type="Texture2D" uid="uid://pokmbeajylg5" path="res://scenes/test/test_basic_enemy/Intro6.png" id="10_4ien6"]
+[ext_resource type="Texture2D" uid="uid://6qhdp1ffw4kb" path="res://scenes/test/test_basic_enemy/Intro7.jpeg" id="11_d8y5k"]
+
+[sub_resource type="Animation" id="Animation_p6g1f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_uh6yc")]
+}
+
+[sub_resource type="Animation" id="Animation_ixeil"]
+resource_name = "deafult"
+length = 10.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_uh6yc"), ExtResource("2_7xqof"), ExtResource("3_0c3ml")]
+}
+
+[sub_resource type="Animation" id="Animation_qqc1g"]
+resource_name = "intro"
+length = 21.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6, 9, 12, 15, 18),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_8vlul"), ExtResource("6_3hb3a"), ExtResource("7_0tkni"), ExtResource("8_gebdp"), ExtResource("9_4nhpf"), ExtResource("10_4ien6"), ExtResource("11_d8y5k")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(21),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8wp5y"]
+_data = {
+"RESET": SubResource("Animation_p6g1f"),
+"deafult": SubResource("Animation_ixeil"),
+"intro": SubResource("Animation_qqc1g")
+}
+
+[node name="Final" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_11lvc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_uh6yc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8wp5y")
+}
+autoplay = "intro"

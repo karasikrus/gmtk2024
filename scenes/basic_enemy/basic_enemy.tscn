@@ -342,8 +342,9 @@ radius = 21.0
 height = 64.0
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 17
 script = ExtResource("1_7ye3v")
-max_health = 1
+max_health = 2
 speed = 50
 speed_on_dash = 200
 beat_dash_time = 0.4

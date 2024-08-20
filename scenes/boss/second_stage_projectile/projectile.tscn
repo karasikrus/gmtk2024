@@ -1,20 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://qbt03t0q0hl2"]
+[gd_scene load_steps=4 format=3 uid="uid://qbt03t0q0hl2"]
 
 [ext_resource type="Script" path="res://scenes/boss/second_stage_projectile/projectile.gd" id="1_78pyu"]
+[ext_resource type="Texture2D" uid="uid://csg4xnfilocym" path="res://scenes/boss/first_stage_projectile/F687E899-148A-48D4-9725-50018B29661B.png" id="2_wqqg7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d75fh"]
-
-[sub_resource type="Gradient" id="Gradient_ox8wu"]
-colors = PackedColorArray(0, 0, 0, 1, 0.89018, 0.235256, 0.563573, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_sn5ps"]
-gradient = SubResource("Gradient_ox8wu")
+[sub_resource type="CircleShape2D" id="CircleShape2D_eena7"]
+radius = 20.0
 
 [node name="Projectile" type="Area2D"]
+scale = Vector2(5, 5)
 script = ExtResource("1_78pyu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_d75fh")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_sn5ps")
+position = Vector2(0, 33)
+texture = ExtResource("2_wqqg7")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(406.724, 311.297, 132.137, 131.014)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_eena7")
