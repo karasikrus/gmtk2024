@@ -68,8 +68,9 @@ void fragment() {
 		COLOR.rgb = inside ? mix(COLOR.rgb, color.rgb, color.a) : color.rgb;
 		COLOR.a += (1.0 - COLOR.a) * color.a;
 	}
-
-	COLOR =  mix(COLOR, damage_tint, normalized_time);
+	if(COLOR.a > 0.0) {
+		COLOR =  mix(COLOR, damage_tint, normalized_time);
+	}
 	
 	// Called for every pixel the material is visible on.
 }
