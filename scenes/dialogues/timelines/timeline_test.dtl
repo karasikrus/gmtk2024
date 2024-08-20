@@ -1,12 +1,3 @@
-join character_test 1
-character_test (Default): Hi, I'm test
-leave character_test
+[style name="New_File2"]
+Hi, I'm Vamp
 Actually, that's all
-join character_test 2 [animation="Instant In Or Out"]
-character_test (Default): Baka
-- 1
-	Это раз
-- 2
-	Это two
-- 3
-	Это tres

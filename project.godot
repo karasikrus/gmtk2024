@@ -28,13 +28,17 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"character_test": "res://scenes/dialogues/characters/character_test.dch"
+"boss": "res://scenes/dialogues/timelines/short_timeline_test/boss.dch",
+"character_test": "res://scenes/dialogues/characters/character_test.dch",
+"vamp": "res://scenes/dialogues/timelines/short_timeline_test/vamp.dch"
 }
 directories/dtl_directory={
+"enemy1": "res://timelines/enemy1.dtl",
+"timeline": "res://scenes/dialogues/timelines/short_timeline_test/timeline.dtl",
 "timeline_test": "res://scenes/dialogues/timelines/timeline_test.dtl"
 }
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://New_File2.tres"]
+layout/default_style="res://New_File2.tres"
 variables={
 "Var": ""
 }
@@ -43,10 +47,10 @@ text/initial_text_reveal_skippable=true
 text/text_reveal_skip_delay=0.1
 text/autoadvance_per_character_delay=0.1
 text/autoadvance_ignored_characters_enabled=true
-animations/join_default_length=0.5
-animations/leave_default_length=0.5
-animations/leave_default_wait=true
-animations/join_default_wait=true
+animations/join_default_length=0.0
+animations/leave_default_length=0.0
+animations/leave_default_wait=false
+animations/join_default_wait=false
 choices/autofocus_first=true
 choices/delay=0.2
 choices/reveal_delay=0
@@ -55,6 +59,11 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/input_action=""
 text/autoadvance_enabled=true
+glossary/default_case_sensitive=true
+animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimations/instant_in_or_out.gd"
+animations/leave_default="res://addons/dialogic/Modules/Character/DefaultAnimations/instant_in_or_out.gd"
+portraits/default_portrait=""
+text/autopauses={}
 
 [display]
 
@@ -117,10 +126,16 @@ super_attack={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":88,"key_label":0,"unicode":120,"location":0,"echo":false,"script":null)
 ]
 }
+debug={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":49,"key_label":0,"unicode":49,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
 2d_physics/layer_5="wall"
+2d_physics/layer_10="trigger"
 
 [rendering]
 

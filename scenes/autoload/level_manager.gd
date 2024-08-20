@@ -10,8 +10,10 @@ var scene_list = [
 ]
 
 func reload_scene():
+	DialogPlayer.hide_all()
 	get_tree().change_scene_to_file(scene_list[current_scene_index])
 
 func move_to_next_scene():
+	DialogPlayer.hide_all()
 	current_scene_index += 1
 	get_tree().change_scene_to_file(scene_list[current_scene_index])

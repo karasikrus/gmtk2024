@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://bcdixy0mqnnbl"]
+[gd_scene load_steps=7 format=4 uid="uid://bcdixy0mqnnbl"]
 
 [ext_resource type="PackedScene" uid="uid://ba7dn3gjf4vkp" path="res://scenes/tilemap_layer_laboratory/tile_map_layer_laboratory.tscn" id="1_nrt7f"]
 [ext_resource type="PackedScene" uid="uid://5cp7s42peway" path="res://scenes/music_controller/music_controller.tscn" id="2_enl0c"]
 [ext_resource type="PackedScene" uid="uid://tgvvceg0drrx" path="res://scenes/basic_enemy/basic_enemy.tscn" id="3_pd0r0"]
 [ext_resource type="PackedScene" uid="uid://wxcqvavncu0b" path="res://scenes/main_character/main_character.tscn" id="4_j0hcy"]
 [ext_resource type="PackedScene" uid="uid://c11kgm7ujubf7" path="res://scenes/strong_basic_enemy/strong_basic_enemy.tscn" id="5_r7vm2"]
+[ext_resource type="PackedScene" uid="uid://81yflyx10pww" path="res://trigger_area.tscn" id="6_auxgb"]
 
 [node name="TestBasicEnemy" type="Node2D"]
 
@@ -41,3 +42,12 @@ drag_bottom_margin = 0.7
 
 [node name="StrongBasicEnemy" parent="." instance=ExtResource("5_r7vm2")]
 position = Vector2(664, 568)
+
+[node name="TriggerArea" parent="." instance=ExtResource("6_auxgb")]
+position = Vector2(73, -68)
+scale = Vector2(3.35851, 4.08649)
+
+[node name="TriggerArea2" parent="." instance=ExtResource("6_auxgb")]
+position = Vector2(1306, -55)
+scale = Vector2(3.35851, 4.08649)
+load_next_level = true
