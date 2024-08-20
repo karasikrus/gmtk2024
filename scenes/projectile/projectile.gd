@@ -4,7 +4,9 @@ var direction = Vector2(0, 0)
 var velocity = 50
 var size = 1
 var was_on_beat = false
-var sizes = [1, 2, 3, 4, 5]
+var sizes = [1, 2, 3, 4, 5,6,7,8,9,10]
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	apply_scale(Vector2(sizes[size], sizes[size]))
@@ -14,6 +16,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	position += delta * direction * velocity
+	sprite_2d.rotation = direction.rotated(deg_to_rad(90)).angle()
+	print(direction)
 
 
 func _on_body_entered(body: Node2D) -> void:

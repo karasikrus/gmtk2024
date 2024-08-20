@@ -130,6 +130,7 @@ func _process_dash(delta):
 		particle_emitter.amount = particle_count_on_success
 		particle_emitter_dots.amount = particles_count_dots
 		particle_emitter_dots.restart()
+		is_anim_in_good_dash = true
 		prints("dash in time")
 	else:
 		dash_speed = dash_speed_not_in_time
@@ -168,6 +169,7 @@ func _process_super_attack(delta):
 	get_parent().add_child(wavefront_node)
 	
 	is_super_attack = true
+	is_anim_special_attack = true
 	super_attack_timer.start(super_attack_time)
 	drop_size()
 	MusicGlobalEvents.update_combo_state(MusicGlobalEvents.ComboState.SMALL_COMBO)
@@ -226,6 +228,7 @@ func _on_dash_timer_timeout() -> void:
 	is_in_dash = false
 	is_in_dash_cooldown = true
 	is_dash_in_time = false
+	is_anim_in_good_dash = false
 	velocity = last_direction * speed
 	dash_cooldown_timer.start(dash_cooldown_time)
 
@@ -254,6 +257,7 @@ func can_super_attack() -> bool:
 
 func _on_super_attack_timer_timeout() -> void:
 	is_super_attack = false
+	is_anim_special_attack = false
 	pass # Replace with function body.
 
 func get_current_size() -> int:
@@ -282,14 +286,14 @@ func _on_ghost_timer_timeout():
 #region Animation
 
 func animate():
-	if is_anim_walking:
-		animate_walk()
-	elif is_anim_in_good_dash:
-		pass
+	if is_anim_in_good_dash:
+		animate_dash_good()
 	elif is_anim_in_bad_dash:
 		pass
 	elif is_anim_special_attack:
-		pass
+		animate_spit()
+	elif is_anim_walking:
+		animate_walk()
 	else:
 		animate_idle() #idle anim
 
@@ -299,6 +303,14 @@ func animate_walk():
 
 func animate_idle():
 	animate_direction(last_direction, "idle_up", "idle_down", "idle_left", "idle_right")
+
+
+func animate_dash_good():
+	animate_direction(last_direction, "dash_good_up", "dash_good_down", "dash_good_left", "dash_good_right")
+
+
+func animate_spit():
+	animate_direction(last_direction, "spit_up", "spit_down", "spit_left", "spit_right")
 
 
 func animate_direction(animation_direction: Vector2, up: String, down : String, left : String, right: String):
