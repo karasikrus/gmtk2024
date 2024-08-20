@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ba7dn3gjf4vkp" path="res://scenes/tilemap_layer_laboratory/tile_map_layer_laboratory.tscn" id="1_uaxpg"]
 [ext_resource type="PackedScene" uid="uid://5cp7s42peway" path="res://scenes/music_controller/music_controller.tscn" id="2_tbsl2"]
 [ext_resource type="PackedScene" uid="uid://wxcqvavncu0b" path="res://scenes/main_character/main_character.tscn" id="3_akhsg"]
-[ext_resource type="PackedScene" uid="uid://81yflyx10pww" path="res://trigger_area.tscn" id="4_vgwca"]
+[ext_resource type="PackedScene" path="res://trigger_area.tscn" id="4_vgwca"]
 [ext_resource type="PackedScene" uid="uid://tgvvceg0drrx" path="res://scenes/basic_enemy/basic_enemy.tscn" id="6_sb817"]
 [ext_resource type="PackedScene" uid="uid://c11kgm7ujubf7" path="res://scenes/strong_basic_enemy/strong_basic_enemy.tscn" id="7_e5kx5"]
 [ext_resource type="PackedScene" uid="uid://da5lq21bgk25n" path="res://scenes/breakable_walls/breakable_wall.tscn" id="7_wf70g"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://ctla15r7utyge"]
+[gd_scene load_steps=7 format=4 uid="uid://djd7dj5ukpagj"]
 
 [ext_resource type="PackedScene" uid="uid://ba7dn3gjf4vkp" path="res://scenes/tilemap_layer_laboratory/tile_map_layer_laboratory.tscn" id="1_l2mrd"]
 [ext_resource type="PackedScene" uid="uid://5cp7s42peway" path="res://scenes/music_controller/music_controller.tscn" id="2_nuhok"]
 [ext_resource type="PackedScene" uid="uid://wxcqvavncu0b" path="res://scenes/main_character/main_character.tscn" id="3_e8d1k"]
-[ext_resource type="PackedScene" uid="uid://81yflyx10pww" path="res://trigger_area.tscn" id="5_5qf5h"]
+[ext_resource type="PackedScene" path="res://trigger_area.tscn" id="5_5qf5h"]
 [ext_resource type="PackedScene" uid="uid://bp8oxmtlsjkxa" path="res://scenes/strong_breakable_wall/strong_breakable_wall.tscn" id="5_6nioa"]
 [ext_resource type="PackedScene" uid="uid://tgvvceg0drrx" path="res://scenes/basic_enemy/basic_enemy.tscn" id="6_o8kep"]
 

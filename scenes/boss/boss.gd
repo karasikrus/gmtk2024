@@ -31,7 +31,7 @@ var second_stage_projectile_index = 0
 
 func _ready() -> void:
 	MusicGlobalEvents.beat.connect(fire_projectile_on_beat)
-
+	player.increased_size_signal.connect(process_player_size_increase)
 
 
 	
@@ -66,7 +66,7 @@ func spawn_enemies_on_second_stage():
 	if !(stage == SECOND_STAGE or stage == LAST_STAGE):
 		return
 	print("enemies")
-	if EnemyManager.small_enemy_count < 6:
+	if EnemyManager.small_enemy_count == 0:
 		var spawn_points = spawn_points_node_second_stage.get_children()
 		spawn_count = 1
 		for i in range(0, spawn_count):
@@ -121,7 +121,7 @@ func _process(delta: float) -> void:
 	spawn_enemies_on_second_stage()
 
 func fire_projectile_on_beat(t):
-	fire_projectiles_on_first_stage()
+	#fire_projectiles_on_first_stage()
 	fire_projectiles_on_second_stage()
 	pass # Replace with function body.
 

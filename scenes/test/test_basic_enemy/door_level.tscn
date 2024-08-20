@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://bgm2onqd70p1k"]
+[gd_scene load_steps=6 format=4 uid="uid://c1cykl8cy6wq0"]
 
 [ext_resource type="PackedScene" uid="uid://ba7dn3gjf4vkp" path="res://scenes/tilemap_layer_laboratory/tile_map_layer_laboratory.tscn" id="1_7af10"]
 [ext_resource type="PackedScene" uid="uid://5cp7s42peway" path="res://scenes/music_controller/music_controller.tscn" id="2_6wn8c"]
 [ext_resource type="PackedScene" uid="uid://wxcqvavncu0b" path="res://scenes/main_character/main_character.tscn" id="4_t057l"]
 [ext_resource type="PackedScene" uid="uid://da5lq21bgk25n" path="res://scenes/breakable_walls/breakable_wall.tscn" id="5_p31dl"]
-[ext_resource type="PackedScene" uid="uid://81yflyx10pww" path="res://trigger_area.tscn" id="6_vsblf"]
+[ext_resource type="PackedScene" path="res://trigger_area.tscn" id="6_vsblf"]
 
 [node name="TestBasicEnemy" type="Node2D"]
 
