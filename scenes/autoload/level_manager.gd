@@ -6,7 +6,7 @@ extends Node
 
 var scene_list = [
 	"res://scenes/menu/main_menu.tscn",
-	"res://scenes/main/main.tscn" 
+	"res://scenes/test/test_basic_enemy/test_hard_enemy.tscn" 
 ]
 
 func reload_scene():

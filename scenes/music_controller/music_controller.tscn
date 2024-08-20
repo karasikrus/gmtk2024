@@ -5,6 +5,9 @@
 
 [node name="MusicController" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_ugh6q")
+max_distance = 20000.0
+bus = &"music"
+playback_type = 1
 parameters/looping = true
 script = ExtResource("1_tqegu")
 bpm = 134

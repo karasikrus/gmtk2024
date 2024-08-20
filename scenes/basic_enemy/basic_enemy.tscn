@@ -343,8 +343,9 @@ height = 64.0
 
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_7ye3v")
-speed = 15
-speed_on_dash = 120
+max_health = 1
+speed = 50
+speed_on_dash = 200
 beat_dash_time = 0.4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

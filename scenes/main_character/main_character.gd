@@ -217,8 +217,9 @@ func get_hit(damage = 1, force_give_hit = false):
 		return
 		
 	if current_size == 0:
-		is_died = true
-		LevelManager.reload_scene()
+		#is_died = true
+		#LevelManager.reload_scene()
+		pass
 	else:
 		on_hit_flash_timer.start(on_hit_flash_time)
 		drop_size()

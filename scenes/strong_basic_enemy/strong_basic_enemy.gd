@@ -8,12 +8,16 @@ class_name StrongBasicEnemy
 @export var max_distance_to_player = 250
 @export var spawn_count = 1
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player_damage_area: AnimationPlayer = $AnimationPlayerDamageArea
+
 var main_player = null
 
 var is_freezed = false
 var is_died = false
 var has_armour = true
 var is_charging = false
+var is_hitting = false
 @onready var health = max_health
 
 #@export var on_hit_cooldown_time = 0.1
@@ -34,7 +38,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	if is_freezed or is_died or not main_player:
+	if is_freezed or is_died or not main_player or is_hitting:
 		return
 	distance_to_player = (main_player.global_position - global_position).length()
 	if not is_charging:
@@ -49,6 +53,7 @@ func _physics_process(delta):
 			pass
 			
 		velocity = direction * speed
+		play_anim("idle", "idle_strong")
 	_process_collision(delta)
 	move_and_slide()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,17 +62,22 @@ func _process_collision(delta):
 	pass
 
 func _beat_processor(t):
+	if is_hitting:
+		return
 	if _is_in_attack_distance() and not is_charging:
 		is_freezed = true
-		attack_zone_node.visible = true
 		is_charging = true
+		play_anim("ready", "ready_strong")
+		animation_player_damage_area.play("ready")
 		return
 	
 	if is_charging:
 		is_charging = false
-		attack_zone_node.visible = false
 		is_freezed = false
+		is_hitting = true
 		_check_area_damage()
+		play_anim("hit", "hit_strong")
+		animation_player_damage_area.play("hit")
 		return
 
 func _check_area_damage():
@@ -107,6 +117,7 @@ func _kill():
 	
 func _spawn_enemy():
 	if EnemyManager.small_enemy_count == 0:
+		print("spawn_enemy")
 		var spawn_points = spawn_points_node.get_children()
 		spawn_count = min(spawn_count, len(spawn_points))
 		for i in range(0, spawn_count):
@@ -116,3 +127,12 @@ func _spawn_enemy():
 			enemy.global_position = spawn_position
 			get_parent().add_child(enemy)
 			pass
+
+func play_anim(anim_no_armor, anim_armor):
+	if has_armour:
+		animation_player.play(anim_armor)
+	else:
+		animation_player.play(anim_no_armor)
+
+func stop_is_hitting():
+	is_hitting = false
