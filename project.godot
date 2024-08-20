@@ -34,6 +34,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "enemy1": "res://timelines/enemy1.dtl",
+"intro1": "res://timelines/intro1.dtl",
 "timeline": "res://scenes/dialogues/timelines/short_timeline_test/timeline.dtl",
 "timeline_test": "res://scenes/dialogues/timelines/timeline_test.dtl"
 }

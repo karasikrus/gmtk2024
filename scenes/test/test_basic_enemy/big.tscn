@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://5cp7s42peway" path="res://scenes/music_controller/music_controller.tscn" id="2_tbsl2"]
 [ext_resource type="PackedScene" uid="uid://wxcqvavncu0b" path="res://scenes/main_character/main_character.tscn" id="3_akhsg"]
 [ext_resource type="PackedScene" uid="uid://81yflyx10pww" path="res://trigger_area.tscn" id="4_vgwca"]
-[ext_resource type="PackedScene" uid="uid://bp8oxmtlsjkxa" path="res://scenes/strong_breakable_wall/strong_breakable_wall.tscn" id="5_vf8mp"]
 [ext_resource type="PackedScene" uid="uid://tgvvceg0drrx" path="res://scenes/basic_enemy/basic_enemy.tscn" id="6_sb817"]
 [ext_resource type="PackedScene" uid="uid://c11kgm7ujubf7" path="res://scenes/strong_basic_enemy/strong_basic_enemy.tscn" id="7_e5kx5"]
+[ext_resource type="PackedScene" uid="uid://da5lq21bgk25n" path="res://scenes/breakable_walls/breakable_wall.tscn" id="7_wf70g"]
 
 [node name="TestBasicEnemy" type="Node2D"]
 
@@ -35,19 +35,6 @@ rotation = 3.14159
 scale = Vector2(2.89865, 4.47632)
 load_next_level = true
 
-[node name="StrongBreakableWall" parent="." instance=ExtResource("5_vf8mp")]
-position = Vector2(640, -199)
-spawn_count = 2
-
-[node name="Node2D" parent="StrongBreakableWall/SpawnPoints" index="0"]
-position = Vector2(-192, 144)
-
-[node name="Node2D2" parent="StrongBreakableWall/SpawnPoints" index="1"]
-position = Vector2(108, 155)
-
-[node name="Node2D3" parent="StrongBreakableWall/SpawnPoints" index="2"]
-position = Vector2(-13, 187)
-
 [node name="BasicEnemy" parent="." instance=ExtResource("6_sb817")]
 position = Vector2(265, 140)
 
@@ -69,4 +56,5 @@ position = Vector2(1222, 106)
 [node name="StrongBasicEnemy2" parent="." instance=ExtResource("7_e5kx5")]
 position = Vector2(189, -35)
 
-[editable path="StrongBreakableWall"]
+[node name="BreakableWall" parent="." instance=ExtResource("7_wf70g")]
+position = Vector2(640, -202)
